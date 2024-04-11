@@ -14,6 +14,7 @@ public class Laboratorio6 {
         frmTareas frm = new frmTareas();
         frm.setTitle("Gestion de Tareas");
         frm.setVisible(true);
+        
     }
 
     

@@ -4,7 +4,6 @@
  */
 package clases;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -13,17 +12,19 @@ import java.util.Date;
 public class Tarea {
     private String tituloTarea;
     private String descripcionTarea;
-    private Date fechaVencimiento;
+    private String fechaVencimiento;
+    private String horaVencimiento;
     private String prioridad;
     private boolean completado;
     
     public Tarea(){
         
     }
-    public Tarea(String tituloTarea, String descripcionTarea, Date fechaVencimiento, String prioridad){
+    public Tarea(String tituloTarea, String descripcionTarea, String fechaVencimiento, String horaVencimiento, String prioridad){
         this.tituloTarea = tituloTarea;
         this.descripcionTarea = descripcionTarea;
         this.fechaVencimiento = fechaVencimiento;
+        this.horaVencimiento = horaVencimiento;
         this.prioridad = prioridad;
         this.completado = false;
         
@@ -45,12 +46,19 @@ public class Tarea {
         this.descripcionTarea = descripcionTarea;
     }
 
-    public Date getFechaVencimiento() {
+    public String getFechaVencimiento() {
         return fechaVencimiento;
     }
 
-    public void setFechaVencimiento(Date fechaVencimiento) {
+    public void setFechaVencimiento(String fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
+    }
+    public String getHoraVencimiento() {
+        return horaVencimiento;
+    }
+
+    public void setHoraVencimiento(String horaVencimiento) {
+        this.horaVencimiento = horaVencimiento;
     }
 
     public String getPrioridad() {
@@ -68,8 +76,8 @@ public class Tarea {
     public void setBoolean(boolean completado){
         this.completado = completado;
     }
-    public static void agregarTarea(String tituloTarea, String descripcionTarea, Date fechaVencimiento, String prioridad, ArrayList<Tarea> tareas){
-        Tarea nuevaTarea = new Tarea(tituloTarea, descripcionTarea, fechaVencimiento, prioridad);
+    public static void agregarTarea(String tituloTarea, String descripcionTarea, String fechaVencimiento,String horaVencimiento, String prioridad, ArrayList<Tarea> tareas){
+        Tarea nuevaTarea = new Tarea(tituloTarea, descripcionTarea, fechaVencimiento, horaVencimiento, prioridad);
         tareas.add(nuevaTarea);
 }
 
