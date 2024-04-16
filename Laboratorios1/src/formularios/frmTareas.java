@@ -7,6 +7,7 @@ import clases.Tarea;
 import java.time.*;
 import java.time.format.*;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +19,16 @@ public class frmTareas extends javax.swing.JFrame {
     String prioridadSeleccionada;
     Tarea tareaSeleccionada;
     LocalTime selectedDate;
+    
+    
+    private void cargarTabla(){
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        for(int n = 0; n < tareasPorHacer.size(); n++){
+            tareaSeleccionada = tareasPorHacer.get(0);
+            String []arreglo = {tareaSeleccionada.getTituloTarea(),tareaSeleccionada.getFechaVencimiento(),tareaSeleccionada.getHoraVencimiento(), tareaSeleccionada.getPrioridad(),tareaSeleccionada.getDescripcionTarea()};
+            modelo.addRow(arreglo);
+        }
+    }
    
     /**
      * Creates new form frmTareas
@@ -140,27 +151,10 @@ public class frmTareas extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Titulo", "Fecha Venc", "Hora Venc", "Prioridad", "Descripcion"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -229,10 +223,13 @@ public class frmTareas extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         String fechaVencimiento = datePicker.getDate() + "";
-      
         String horaVencimiento = timePicker.getTime() + "";
-        System.out.println(horaVencimiento); 
+        String tituloTarea = txtTitulo.getText();
+        String descripcionTarea = txtDescripcion.getText();
+
+        Tarea.agregarTarea(tituloTarea, descripcionTarea, fechaVencimiento, horaVencimiento, prioridadSeleccionada, tareasPorHacer);
         
+        cargarTabla();
        
         
     }//GEN-LAST:event_btnAgregarActionPerformed

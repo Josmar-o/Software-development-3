@@ -5,11 +5,13 @@
 package formularios;
 import clases.Libro;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Omar Garcia
  */
 public class frmLibros extends javax.swing.JFrame {
+    
     //array que usa el metodo estatico
     ArrayList<Libro> biblioteca = new ArrayList<>();
     //variable para que pueda ser accedida desde el dropdown y los demas componentes
@@ -29,6 +31,8 @@ public class frmLibros extends javax.swing.JFrame {
         txtAnoDePublicacion.setText("");
         txtAutor.setText("");
     }
+    
+
     
     /**
      * Creates new form frmBiblioteca
@@ -335,12 +339,7 @@ public class frmLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarLibroActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        // muestra en los label de salida (innecesario porque el dropdwon lo hace)
-        lblLibro.setText(libroSeleccionado.getNombreLibro());
-        lblAutor.setText(libroSeleccionado.getAutor());
-        lblAnoPublicacion.setText(String.valueOf(libroSeleccionado.getAnoPublicacion()));
-        lblDisponibilidad.setText(libroSeleccionado.estaDisponible(libroSeleccionado));
-        
+        // muestra en los label de salida (innecesario porque el dropdwon lo hace) 
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void SeleccionLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionLibrosActionPerformed
