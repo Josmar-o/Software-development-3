@@ -27,8 +27,13 @@ public class frmTareas extends javax.swing.JFrame {
        
             tareaSeleccionada = tareasPorHacer.get(n);
             String []arreglo = {tareaSeleccionada.getTituloTarea(),tareaSeleccionada.getFechaVencimiento(),tareaSeleccionada.getHoraVencimiento(), tareaSeleccionada.getPrioridad(),tareaSeleccionada.getDescripcionTarea()};
-            modelo.addRow(arreglo);
-        
+            modelo.addRow(arreglo);      
+    }
+    private void cleanTxt(){
+        txtTitulo.setText("");
+        txtDescripcion.setText("");
+        datePicker.setText("");
+        timePicker.setText("");
     }
    
     /**
@@ -248,6 +253,7 @@ public class frmTareas extends javax.swing.JFrame {
         
         cargarTabla();
         n++;
+        cleanTxt();
        
         
     }//GEN-LAST:event_btnAgregarActionPerformed
