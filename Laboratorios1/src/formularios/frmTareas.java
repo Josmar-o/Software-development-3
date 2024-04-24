@@ -28,13 +28,26 @@ public class frmTareas extends javax.swing.JFrame {
        
             tareaSeleccionada = ArrayTarea.get(n);
             String []arreglo = {tareaSeleccionada.getTituloTarea(),tareaSeleccionada.getFechaVencimiento(),tareaSeleccionada.getHoraVencimiento(), tareaSeleccionada.getPrioridad(),tareaSeleccionada.getDescripcionTarea(), tareaSeleccionada.estaCompletado(tareaSeleccionada.getCompletado())};
-            modelo.addRow(arreglo);      
+            modelo.addRow(arreglo);     
+            
     }
+    
     private void cleanTxt(){
         txtTitulo.setText("");
         txtDescripcion.setText("");
         datePicker.setText("");
         timePicker.setText("");
+    }
+    
+    public void RefreshTable(JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0); // Clears all rows from the table
+        if(n != 0){
+            for (Tarea tarea : tareasPorHacer){
+            String []arreglo = {tarea.getTituloTarea(),tarea.getFechaVencimiento(),tarea.getHoraVencimiento(), tarea.getPrioridad(),tarea.getDescripcionTarea(), tarea.estaCompletado(tarea.getCompletado())};
+            model.addRow(arreglo);
+        }
+        }
     }
    
     /**
@@ -323,19 +336,18 @@ public class frmTareas extends javax.swing.JFrame {
         String horaVencimiento = timePicker.getTime() + "";
         String tituloTarea = txtTitulo.getText();
         String descripcionTarea = txtDescripcion.getText();
-
         Tarea.agregarTarea(tituloTarea, descripcionTarea, fechaVencimiento, horaVencimiento, prioridadSeleccionada, tareasPorHacer);
-        txtAreaDesc.setText(descripcionTarea);
-        
+        txtAreaDesc.setText(descripcionTarea); 
         cargarTabla(jTable1 , n, tareasPorHacer);
-        n++;
         cleanTxt();
+        this.n++;
        
         
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         // TODO add your handling code here:
+        System.out.println(n);
         
     }//GEN-LAST:event_btnBorrarActionPerformed
 
@@ -357,9 +369,12 @@ public class frmTareas extends javax.swing.JFrame {
         
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow != -1){
+            this.n--;
+            x++;
             Tarea.copiarTarea(tareasPorHacer, tareasCompletadas, selectedRow);
             cargarTabla(jTable2, x, tareasPorHacer);
-            x++;
+            tareasPorHacer.remove(selectedRow);
+            RefreshTable(jTable1);
         }
     }//GEN-LAST:event_btnCompletadoActionPerformed
 
