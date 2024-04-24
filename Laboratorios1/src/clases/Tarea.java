@@ -76,10 +76,24 @@ public class Tarea {
     public void setBoolean(boolean completado){
         this.completado = completado;
     }
+    
+    public String estaCompletado (boolean completado){
+        if (completado == true){
+            return "Completado";
+        }else{
+            return "En Progreso";
+        }
+  
+    }
     public static void agregarTarea(String tituloTarea, String descripcionTarea, String fechaVencimiento,String horaVencimiento, String prioridad, ArrayList<Tarea> tareas){
         Tarea nuevaTarea = new Tarea(tituloTarea, descripcionTarea, fechaVencimiento, horaVencimiento, prioridad);
         tareas.add(nuevaTarea);
-}
+    }
+    public static void copiarTarea(ArrayList<Tarea> tareasACopiar, ArrayList<Tarea> tareas, int index){
+        Tarea tareaACopiar = tareasACopiar.get(index);
+   
+        tareas.add(new Tarea(tareaACopiar.getTituloTarea(), tareaACopiar.getDescripcionTarea(),tareaACopiar.getFechaVencimiento(), tareaACopiar.getHoraVencimiento(), tareaACopiar.getPrioridad()));
+    }
 
     
 }
