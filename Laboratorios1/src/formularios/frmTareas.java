@@ -20,7 +20,7 @@ public class frmTareas extends javax.swing.JFrame {
     String prioridadSeleccionada;
     Tarea tareaSeleccionada;
     LocalTime selectedDate;
-    int n = 0 ,x= 0;
+    int n = -1 ,x= -1;
     
     
     private void cargarTabla(JTable table, int n, ArrayList<Tarea> ArrayTarea){
@@ -41,8 +41,8 @@ public class frmTareas extends javax.swing.JFrame {
     
     public void RefreshTable(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0); // Clears all rows from the table
-        if(n != 0){
+        model.setRowCount(0);
+        if(n  > -1){
             for (Tarea tarea : tareasPorHacer){
             String []arreglo = {tarea.getTituloTarea(),tarea.getFechaVencimiento(),tarea.getHoraVencimiento(), tarea.getPrioridad(),tarea.getDescripcionTarea(), tarea.estaCompletado(tarea.getCompletado())};
             model.addRow(arreglo);
@@ -77,7 +77,6 @@ public class frmTareas extends javax.swing.JFrame {
         datePicker = new com.github.lgooddatepicker.components.DatePicker();
         timePicker = new com.github.lgooddatepicker.components.TimePicker();
         btnAgregar = new javax.swing.JButton();
-        btnBorrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
@@ -90,6 +89,7 @@ public class frmTareas extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         btnCompletado = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -163,13 +163,6 @@ public class frmTareas extends javax.swing.JFrame {
             }
         });
 
-        btnBorrar.setText("Borrar");
-        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBorrarActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Descripcion");
 
         txtDescripcion.setColumns(20);
@@ -201,8 +194,8 @@ public class frmTareas extends javax.swing.JFrame {
     txtAreaDesc.setRows(5);
     jScrollPane3.setViewportView(txtAreaDesc);
 
-    jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
     jLabel6.setText("Tareas pendientes");
+    jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
     jTable2.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
@@ -232,8 +225,11 @@ public class frmTareas extends javax.swing.JFrame {
         }
     });
 
-    jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
     jLabel7.setText("Tareas Completadas");
+    jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+    jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    jLabel8.setText("TOCA UN ROW Y \nMIRA LA DESCRIPCION AKI");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -253,34 +249,34 @@ public class frmTareas extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(29, 29, 29)
-                            .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(113, 113, 113)
                             .addComponent(btnCompletado, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(131, 131, 131)
-                            .addComponent(jLabel3)))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)))
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(131, 131, 131)
+                    .addComponent(jLabel3))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(100, 100, 100)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(31, 31, 31)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(12, Short.MAX_VALUE))
+                    .addContainerGap(26, Short.MAX_VALUE))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7)
-                    .addGap(186, 186, 186))))
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(107, 107, 107))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(186, 186, 186))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(107, 107, 107))))))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,22 +296,23 @@ public class frmTareas extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCompletado, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
                 .addGroup(layout.createSequentialGroup()
                     .addGap(18, 18, 18)
                     .addComponent(jLabel3)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap())
+                    .addGap(44, 44, 44)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
     );
 
     pack();
@@ -332,24 +329,19 @@ public class frmTareas extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+            this.n++;
         String fechaVencimiento = datePicker.getDate() + "";
         String horaVencimiento = timePicker.getTime() + "";
         String tituloTarea = txtTitulo.getText();
         String descripcionTarea = txtDescripcion.getText();
-        Tarea.agregarTarea(tituloTarea, descripcionTarea, fechaVencimiento, horaVencimiento, prioridadSeleccionada, tareasPorHacer);
+        Tarea.agregarTarea(tituloTarea, descripcionTarea, fechaVencimiento, horaVencimiento, prioridadSeleccionada,false, tareasPorHacer );
         txtAreaDesc.setText(descripcionTarea); 
         cargarTabla(jTable1 , n, tareasPorHacer);
         cleanTxt();
-        this.n++;
+    
        
         
     }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
-        // TODO add your handling code here:
-        System.out.println(n);
-        
-    }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
@@ -362,19 +354,24 @@ public class frmTareas extends javax.swing.JFrame {
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
+     int selectedRow = jTable2.getSelectedRow();
+     if (selectedRow != -1){
+         Object data = jTable2.getValueAt(selectedRow, 4);
+         txtAreaDesc.setText(data.toString());
+     }
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void btnCompletadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletadoActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:      
         int selectedRow = jTable1.getSelectedRow();
-        if(selectedRow != -1){
-            this.n--;
-            x++;
-            Tarea.copiarTarea(tareasPorHacer, tareasCompletadas, selectedRow);
-            cargarTabla(jTable2, x, tareasPorHacer);
-            tareasPorHacer.remove(selectedRow);
-            RefreshTable(jTable1);
+
+        if(selectedRow >= 0 && selectedRow < tareasPorHacer.size()){  
+        this.n--;
+        x++;
+        Tarea.copiarTarea(tareasPorHacer, tareasCompletadas, selectedRow);
+        cargarTabla(jTable2, x, tareasCompletadas); // Refresh the completed tasks table
+        tareasPorHacer.remove(selectedRow);
+        RefreshTable(jTable1);
         }
     }//GEN-LAST:event_btnCompletadoActionPerformed
 
@@ -416,7 +413,6 @@ public class frmTareas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnCompletado;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbPrioridad;
@@ -428,6 +424,7 @@ public class frmTareas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

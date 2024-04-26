@@ -20,13 +20,14 @@ public class Tarea {
     public Tarea(){
         
     }
-    public Tarea(String tituloTarea, String descripcionTarea, String fechaVencimiento, String horaVencimiento, String prioridad){
+    public Tarea(String tituloTarea, String descripcionTarea, String fechaVencimiento, String horaVencimiento, String prioridad, boolean completado){
         this.tituloTarea = tituloTarea;
         this.descripcionTarea = descripcionTarea;
         this.fechaVencimiento = fechaVencimiento;
         this.horaVencimiento = horaVencimiento;
         this.prioridad = prioridad;
-        this.completado = false;
+        this.completado = completado;
+        
         
     }
 
@@ -85,14 +86,14 @@ public class Tarea {
         }
   
     }
-    public static void agregarTarea(String tituloTarea, String descripcionTarea, String fechaVencimiento,String horaVencimiento, String prioridad, ArrayList<Tarea> tareas){
-        Tarea nuevaTarea = new Tarea(tituloTarea, descripcionTarea, fechaVencimiento, horaVencimiento, prioridad);
+    public static void agregarTarea(String tituloTarea, String descripcionTarea, String fechaVencimiento,String horaVencimiento, String prioridad,boolean completado,  ArrayList<Tarea> tareas){
+        Tarea nuevaTarea = new Tarea(tituloTarea, descripcionTarea, fechaVencimiento, horaVencimiento, prioridad, completado);
         tareas.add(nuevaTarea);
     }
     public static void copiarTarea(ArrayList<Tarea> tareasACopiar, ArrayList<Tarea> tareas, int index){
         Tarea tareaACopiar = tareasACopiar.get(index);
    
-        tareas.add(new Tarea(tareaACopiar.getTituloTarea(), tareaACopiar.getDescripcionTarea(),tareaACopiar.getFechaVencimiento(), tareaACopiar.getHoraVencimiento(), tareaACopiar.getPrioridad()));
+        tareas.add(new Tarea(tareaACopiar.getTituloTarea(), tareaACopiar.getDescripcionTarea(),tareaACopiar.getFechaVencimiento(), tareaACopiar.getHoraVencimiento(), tareaACopiar.getPrioridad(), true));
     }
 
     
