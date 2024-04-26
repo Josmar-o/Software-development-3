@@ -130,6 +130,7 @@ ArrayList<Usuario> usuarios= new ArrayList<>();
             JOptionPane.showMessageDialog(rootPane, "Por favor introducir la contraseña");
         }else{
             Usuario.registerUser(txtUser.getText(), txtPass.getText(), usuarios);
+            JOptionPane.showMessageDialog(rootPane, "Resgistro exitoso");
         }
         
     }//GEN-LAST:event_registerActionPerformed
