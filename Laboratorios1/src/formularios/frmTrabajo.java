@@ -4,6 +4,7 @@
  */
 package formularios;
 import clases.Trabajo;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,8 +44,6 @@ public class frmTrabajo extends javax.swing.JFrame {
         lblNombre = new javax.swing.JLabel();
         lblHorasTrabajadas = new javax.swing.JLabel();
         lblSueldoSemanal = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Calculo de Sueldo Semanal");
@@ -196,6 +195,7 @@ public class frmTrabajo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        try{
         trabajo = new Trabajo();
         trabajo.setNombre(txtNombre.getText());
         trabajo.setSueldoPorHora(Double.parseDouble(txtSueldoPorHora.getText()));
@@ -205,6 +205,9 @@ public class frmTrabajo extends javax.swing.JFrame {
         lblNombre.setText(trabajo.getNombre());
         lblHorasTrabajadas.setText(String.valueOf(trabajo.getHorasTrabajadas()));
         lblSueldoSemanal.setText(String.valueOf(trabajo.getSueldoSemanal()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

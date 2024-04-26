@@ -7,6 +7,7 @@ import clases.Tarea;
 import java.time.*;
 import java.time.format.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -90,8 +91,6 @@ public class frmTareas extends javax.swing.JFrame {
         btnCompletado = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Gestor de Tareas");
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -260,7 +259,7 @@ public class frmTareas extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(100, 100, 100)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(31, 31, 31)
@@ -269,14 +268,11 @@ public class frmTareas extends javax.swing.JFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(26, Short.MAX_VALUE))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(186, 186, 186))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(107, 107, 107))))))
+                    .addComponent(jLabel7)
+                    .addGap(186, 186, 186))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(107, 107, 107))))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,7 +325,8 @@ public class frmTareas extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-            this.n++;
+        try{
+        this.n++;
         String fechaVencimiento = datePicker.getDate() + "";
         String horaVencimiento = timePicker.getTime() + "";
         String tituloTarea = txtTitulo.getText();
@@ -338,6 +335,9 @@ public class frmTareas extends javax.swing.JFrame {
         txtAreaDesc.setText(descripcionTarea); 
         cargarTabla(jTable1 , n, tareasPorHacer);
         cleanTxt();
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
+        }
     
        
         
@@ -362,7 +362,8 @@ public class frmTareas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void btnCompletadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletadoActionPerformed
-        // TODO add your handling code here:      
+        // TODO add your handling code here:    
+        try{
         int selectedRow = jTable1.getSelectedRow();
 
         if(selectedRow >= 0 && selectedRow < tareasPorHacer.size()){  
@@ -372,6 +373,10 @@ public class frmTareas extends javax.swing.JFrame {
         cargarTabla(jTable2, x, tareasCompletadas); // Refresh the completed tasks table
         tareasPorHacer.remove(selectedRow);
         RefreshTable(jTable1);
+        }
+        
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
         }
     }//GEN-LAST:event_btnCompletadoActionPerformed
 

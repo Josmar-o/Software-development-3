@@ -1,10 +1,10 @@
 package laboratorio1;
-import formularios.frmPersonas;
+import formularios.*;
 
 public class Laboratorio1 {
     public static void main(String[] args) {
-        frmPersonas frm = new frmPersonas();
-        frm.setTitle("Manejo de Personas");
-        frm.setVisible(true);
+        frmLogin frmLogin  = new frmLogin();
+        frmLogin.setTitle("Login");
+        frmLogin.setVisible(true);
     }
 }

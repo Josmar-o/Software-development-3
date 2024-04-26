@@ -4,6 +4,7 @@
  */
 package formularios;
 import clases.CuentaBancaria;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,8 +50,6 @@ public class frmCuentasBancarias extends javax.swing.JFrame {
         btnConsultar = new javax.swing.JButton();
         btnDepositar = new javax.swing.JButton();
         btnCrearCuenta = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de Entrada"));
 
@@ -279,21 +278,35 @@ public class frmCuentasBancarias extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
-        lblNumCuenta.setText(String.valueOf(cuenta.getNumCuenta()));
-        lblTitular.setText(cuenta.getTitular());
-        lblSaldo.setText(String.valueOf(cuenta.getSaldo()));
+        try{
+            lblNumCuenta.setText(String.valueOf(cuenta.getNumCuenta()));
+            lblTitular.setText(cuenta.getTitular());
+            lblSaldo.setText(String.valueOf(cuenta.getSaldo()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
         // TODO add your handling code here:
-        cuenta.depositar(Double.parseDouble(txtDepositoMonto.getText()));
+        try{
+            cuenta.depositar(Double.parseDouble(txtDepositoMonto.getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
+        }
+        
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     private void btnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCuentaActionPerformed
         // TODO add your handling code here:
+        try{
         cuenta = new CuentaBancaria();
         cuenta.setNumCuenta(Integer.parseInt(txtNumCuenta.getText()));
-        cuenta.setTitular(txtTitular.getText());
+        cuenta.setTitular(txtTitular.getText());}
+        
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
+        }
     }//GEN-LAST:event_btnCrearCuentaActionPerformed
 
     /**

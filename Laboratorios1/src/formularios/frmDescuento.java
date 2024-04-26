@@ -4,6 +4,7 @@
  */
 package formularios;
 import clases.Descuento;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,8 +42,6 @@ public class frmDescuento extends javax.swing.JFrame {
         lblDescuento = new javax.swing.JLabel();
         lblPrecioConDescuento = new javax.swing.JLabel();
         btnCalcular = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de Entrada"));
 
@@ -184,6 +183,7 @@ public class frmDescuento extends javax.swing.JFrame {
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         // TODO add your handling code here:
+        try{
         art = new Descuento();
         art.setDescripcion(txtDescripcion.getText());
         art.setPrecio(Double.parseDouble(txtPrecio.getText()));
@@ -192,7 +192,10 @@ public class frmDescuento extends javax.swing.JFrame {
         lblDescuento.setText(String.valueOf(art.getDescuentoCan()));
         lblNombre.setText(art.getDescripcion());
         lblPrecioConDescuento.setText(String.valueOf(art.getPrecio() - art.getDescuentoCan()));
-        
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
+        }
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     /**

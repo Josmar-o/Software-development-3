@@ -5,6 +5,7 @@
 package formularios;
 import clases.Libro;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -78,8 +79,6 @@ public class frmLibros extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de Entrada"));
 
@@ -333,9 +332,14 @@ public class frmLibros extends javax.swing.JFrame {
 
     private void btnAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLibroActionPerformed
         // agrega el libro, actualiza el drop down y limpia las entradas
+        try{
         Libro.agregarLibro(txtNombre.getText(), txtAutor.getText(), Integer.parseInt(txtAnoDePublicacion.getText()), biblioteca);
         actualizarDropDown();
-        limpiarEntradas();                
+        limpiarEntradas();
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
+        }
     }//GEN-LAST:event_btnAgregarLibroActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -344,6 +348,7 @@ public class frmLibros extends javax.swing.JFrame {
 
     private void SeleccionLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionLibrosActionPerformed
         //dropdown que le da valor a la variable libroSeleccionado y muestra cuandos se clickea
+        try{
         int indiceSeleccionado = SeleccionLibros.getSelectedIndex();
         if(indiceSeleccionado != -1){
             libroSeleccionado = biblioteca.get(indiceSeleccionado);
@@ -353,19 +358,31 @@ public class frmLibros extends javax.swing.JFrame {
         lblAutor.setText(libroSeleccionado.getAutor());
         lblAnoPublicacion.setText(String.valueOf(libroSeleccionado.getAnoPublicacion()));
         lblDisponibilidad.setText(libroSeleccionado.estaDisponible(libroSeleccionado));
-
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
+        }
     }//GEN-LAST:event_SeleccionLibrosActionPerformed
 
     private void btnPrestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestarActionPerformed
         // boton para darle que no esta disponible
+        try{
         libroSeleccionado.setDisponible(false);
         btnMostrarActionPerformed(evt);
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
+        }
     }//GEN-LAST:event_btnPrestarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         //boton para darle que ahora esta disponible
+        try{
         libroSeleccionado.setDisponible(true);
         btnMostrarActionPerformed(evt);
+        
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Se ha presentado un error");
+        }
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
