@@ -166,6 +166,10 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
+        frmEmpleados frm7 = new frmEmpleados();
+        frm7.setVisible(true);
+        frm7.setTitle("Gestion de Empleados");
+                
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
