@@ -6,8 +6,8 @@ package Ej1Empleados;
 
 /**
  *
- * @author omargarcia
+ * @author Omar Garcia
  */
-public class Persona {
+public class Empleado extends Persona {
     
 }
