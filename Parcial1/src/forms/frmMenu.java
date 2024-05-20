@@ -33,6 +33,8 @@ public class frmMenu extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         jMenu1.setText("Programas");
 
         jMenuItem1.setText("Programa de Calificaciones");
