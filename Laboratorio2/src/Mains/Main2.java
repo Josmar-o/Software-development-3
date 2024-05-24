@@ -12,7 +12,7 @@ import Ej2Vehiculos.*;
 public class Main2 {
     public static void main(String[] args) {
         Automovil auto1 = new Automovil(true, true, 0, 0, 0);
-        System.out.println(auto1.getCantLlantas());
+        System.out.println(auto1.getTipoDeVehiculo());
         
     }
     

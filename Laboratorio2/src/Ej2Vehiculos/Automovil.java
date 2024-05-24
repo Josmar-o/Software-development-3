@@ -12,8 +12,9 @@ public class Automovil extends Vehiculo {
         super(velMax, CombusPorKm, cantLlantas);
         this.aireAcondicionado = aireAcondicionado;
         this.bolsasDeAire = bolsasDeAire;
-        this.setTipoVehiculo("Automovil"); 
+        this.setTipoDeVehiculo("Automovil");      
     }
+    
 
     public boolean isAireAcondicionado() {
         return aireAcondicionado;
@@ -31,8 +32,5 @@ public class Automovil extends Vehiculo {
         this.bolsasDeAire = bolsasDeAire;
     }
 
-    private void setTipoVehiculo(String automovil) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
 }

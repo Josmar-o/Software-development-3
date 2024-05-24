@@ -1,31 +1,23 @@
-  /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Ej2Vehiculos;
 
-/**
- *
- * @author Omar Garcia
- */
 public class Vehiculo {
     private double velMax;
     private double combusPorKm;
     private int cantLlantas;
     private String tipoDeVehiculo;
-    
-    Vehiculo(){
+
+    public Vehiculo() {
         
     }
-    
-    public Vehiculo(double velMax, int cantLlantas){
+
+    public Vehiculo(double velMax, int cantLlantas) {
         this.velMax = velMax;
         this.cantLlantas = cantLlantas;
     }
 
-    public Vehiculo(double velMax, double CombusPorKm, int cantLlantas) {
+    public Vehiculo(double velMax, double combusPorKm, int cantLlantas) {
         this.velMax = velMax;
-        this.combusPorKm = CombusPorKm;
+        this.combusPorKm = combusPorKm;
         this.cantLlantas = cantLlantas;
     }
 
@@ -41,8 +33,8 @@ public class Vehiculo {
         return combusPorKm;
     }
 
-    public void setCombusPorKm(double CombusPorKm) {
-        this.combusPorKm = CombusPorKm;
+    public void setCombusPorKm(double combusPorKm) {
+        this.combusPorKm = combusPorKm;
     }
 
     public int getCantLlantas() {
@@ -60,6 +52,4 @@ public class Vehiculo {
     public void setTipoDeVehiculo(String tipoDeVehiculo) {
         this.tipoDeVehiculo = tipoDeVehiculo;
     }
-    
-
 }
