@@ -12,6 +12,10 @@ import java.time.LocalDate;
 public class Alimento extends Producto{
     private LocalDate fechaExp;
     private boolean esOrganico;
+    
+    public Alimento(){
+        
+    }
 
     public Alimento(LocalDate fechaExp, boolean esOrganico, String nombre, double precio, double impuesto, double descuento) {
         super(nombre, precio, impuesto, descuento);

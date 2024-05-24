@@ -9,17 +9,24 @@ package Ej2Vehiculos;
  * @author Omar Garcia
  */
 public class Vehiculo {
-    public double velMax;
-    public double combusPorKm;
-    public int cantLlantas;
+    private double velMax;
+    private double combusPorKm;
+    private int cantLlantas;
+    private String tipoDeVehiculo;
     
     Vehiculo(){
         
     }
+    
+    public Vehiculo(double velMax, int cantLlantas){
+        this.velMax = velMax;
+        this.cantLlantas = cantLlantas;
+    }
 
-    public Vehiculo(double velMax, double CombusPorKm) {
+    public Vehiculo(double velMax, double CombusPorKm, int cantLlantas) {
         this.velMax = velMax;
         this.combusPorKm = CombusPorKm;
+        this.cantLlantas = cantLlantas;
     }
 
     public double getVelMax() {
@@ -45,8 +52,14 @@ public class Vehiculo {
     public void setCantLlantas(int cantLlantas) {
         this.cantLlantas = cantLlantas;
     }
+
+    public String getTipoDeVehiculo() {
+        return tipoDeVehiculo;
+    }
+
+    public void setTipoDeVehiculo(String tipoDeVehiculo) {
+        this.tipoDeVehiculo = tipoDeVehiculo;
+    }
     
-    
-    
-    
+
 }

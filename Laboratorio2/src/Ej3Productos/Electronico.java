@@ -16,9 +16,9 @@ public class Electronico extends Producto{
    }
 
     public Electronico(int garantiaAnios, String marca, String nombre, double precio, double impuesto, double descuento) {
-        super(nombre, precio, impuesto, descuento);
-        this.garantiaAnios = garantiaAnios;
+        super(nombre, precio, impuesto, descuento);      
         this.marca = marca;
+        this.garantiaAnios = garantiaAnios;
     }
 
     public int getGarantiaAnios() {

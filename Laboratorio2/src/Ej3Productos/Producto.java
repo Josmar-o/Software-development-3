@@ -60,7 +60,7 @@ public class Producto {
     }
     
     public void calcularPrecioTotal(){
-        this.precioTotal = ((this.descuento/100) * this.precio) - precio + ((this.impuesto/100) * this.precio);
+        this.precioTotal = precio -((this.descuento/100) * this.precio) + ((this.impuesto/100) * this.precio);
     }
     
 }

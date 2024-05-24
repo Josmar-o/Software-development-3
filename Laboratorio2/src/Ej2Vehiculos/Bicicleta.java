@@ -16,11 +16,13 @@ public class Bicicleta extends Vehiculo{
 
     }
 
-    public Bicicleta(boolean amortiguadores, boolean timbre, double velMax, double CombusPorKm) {
-        super(velMax, CombusPorKm);
+    public Bicicleta(boolean amortiguadores, boolean timbre, double velMax, int cantLlantas) {
+        super(velMax, cantLlantas);
         this.amortiguadores = amortiguadores;
         this.timbre = timbre;
     }
+
+
 
     public void setAmortiguadores(boolean amortiguadores) {
         this.amortiguadores = amortiguadores;

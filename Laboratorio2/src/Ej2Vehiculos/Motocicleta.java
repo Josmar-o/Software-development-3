@@ -16,11 +16,13 @@ public class Motocicleta extends Vehiculo{
 
     }
 
-    public Motocicleta(boolean frenosABS, boolean cajuela, double velMax, double CombusPorKm) {
-        super(velMax, CombusPorKm);
+    public Motocicleta(boolean frenosABS, boolean cajuela, double velMax, double CombusPorKm, int cantLlantas) {
+        super(velMax, CombusPorKm, cantLlantas);
         this.frenosABS = frenosABS;
         this.cajuela = cajuela;
     }
+
+
 
     public boolean isFrenosABS() {
         return frenosABS;

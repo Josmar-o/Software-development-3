@@ -1,24 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Ej2Vehiculos;
 
-/**
- *
- * @author omargarcia
- */
-public class Automovil extends Vehiculo{
-    public boolean aireAcondicionado;
-    public boolean bolsasDeAire;
-    public Automovil(){
+public class Automovil extends Vehiculo {
+    private boolean aireAcondicionado;
+    private boolean bolsasDeAire;
+
+    public Automovil() {
         
     }
 
-    public Automovil(boolean aireAcondicionado, boolean bolsasDeAire, double velMax, double CombusPorKm) {
-        super(velMax, CombusPorKm);
+    public Automovil(boolean aireAcondicionado, boolean bolsasDeAire, double velMax, double CombusPorKm, int cantLlantas) {
+        super(velMax, CombusPorKm, cantLlantas);
         this.aireAcondicionado = aireAcondicionado;
         this.bolsasDeAire = bolsasDeAire;
+        this.setTipoVehiculo("Automovil"); 
     }
 
     public boolean isAireAcondicionado() {
@@ -36,9 +30,9 @@ public class Automovil extends Vehiculo{
     public void setBolsasDeAire(boolean bolsasDeAire) {
         this.bolsasDeAire = bolsasDeAire;
     }
-    
-    
-    
-    
-    
+
+    private void setTipoVehiculo(String automovil) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
