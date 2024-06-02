@@ -1,0 +1,14 @@
+CREATE DATABASE gestiondevehiculos;
+
+CREATE TABLE Vehiculos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    TipoDeVehiculo VARCHAR(50) NOT NULL,
+    Marca VARCHAR(50) NOT NULL,
+    Modelo VARCHAR(50) NOT NULL,
+    Anio INT NOT NULL,
+    PrecioPorDia DOUBLE NOT NULL,
+    ImagenPath VARCHAR(255) NOT NULL
+);
+
+select * from Vehiculos;
+

@@ -10,15 +10,14 @@ public class Vehiculo {
         
     }
 
-    public Vehiculo(double velMax, int cantLlantas) {
+    public Vehiculo(double velMax) {
         this.velMax = velMax;
-        this.cantLlantas = cantLlantas;
+
     }
 
-    public Vehiculo(double velMax, double combusPorKm, int cantLlantas) {
+    public Vehiculo(double velMax, double combusPorKm) {
         this.velMax = velMax;
         this.combusPorKm = combusPorKm;
-        this.cantLlantas = cantLlantas;
     }
 
     public double getVelMax() {
@@ -52,4 +51,6 @@ public class Vehiculo {
     public void setTipoDeVehiculo(String tipoDeVehiculo) {
         this.tipoDeVehiculo = tipoDeVehiculo;
     }
+    
+
 }

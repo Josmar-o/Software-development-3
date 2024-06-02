@@ -9,19 +9,19 @@ package Ej1Empleados;
  * @author omargarcia
  */
 public class Cliente extends Persona{
-    public int limCred;
+    public double limCred;
     
     public Cliente(){
         
     }
 
-    public Cliente(int limCred, String cedula, String domicilio, String nombre) {
+    public Cliente(double limCred, String cedula, String domicilio, String nombre) {
         super(cedula, domicilio, nombre);
         this.limCred = limCred;
     }
     
 
-    public int getLimCred() {
+    public double getLimCred() {
         return limCred;
     }
 

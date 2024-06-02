@@ -9,29 +9,19 @@ package Ej2Vehiculos;
  * @author omargarcia
  */
 public class Bicicleta extends Vehiculo{
-    public boolean amortiguadores; 
-    public boolean timbre;
+
 
     public Bicicleta() {
 
     }
 
-    public Bicicleta(boolean amortiguadores, boolean timbre, double velMax, int cantLlantas) {
-        super(velMax, cantLlantas);
-        this.amortiguadores = amortiguadores;
-        this.timbre = timbre;
+    public Bicicleta( double velMax) {
+        super(velMax);
+        setCantLlantas(2);
+        setCombusPorKm(0);
+        setTipoDeVehiculo("Bicicleta");
     }
 
-
-
-    public void setAmortiguadores(boolean amortiguadores) {
-        this.amortiguadores = amortiguadores;
-    }
-
-    public void setTimbre(boolean timbre) {
-        this.timbre = timbre;
-    }
-    
     
     
     

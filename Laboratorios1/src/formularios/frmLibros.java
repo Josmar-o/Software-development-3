@@ -167,8 +167,8 @@ public class frmLibros extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Manejo de Libros Biblioteca");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         btnAgregarLibro.setText("Agregar");
         btnAgregarLibro.addActionListener(new java.awt.event.ActionListener() {

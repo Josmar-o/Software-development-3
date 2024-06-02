@@ -13,7 +13,6 @@ import java.time.LocalDate;
 public class Main3 {
     public static void main(String[] args) {
 
-        Alimento alimento1 = new Alimento(LocalDate.now(), true, "Lentejas", 0, 0, 0);
-        System.out.println(alimento1.getFechaExp());
+        
     }
 }

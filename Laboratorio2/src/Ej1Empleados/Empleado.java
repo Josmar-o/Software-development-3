@@ -21,7 +21,6 @@ public class Empleado extends Persona {
         super(cedula, domicilio, nombre);
         this.horasTrab = horasTrab;
         this.sueldoHora = sueldoHora;
-        this.sueldoFinal = calcularSalarioFinal();
     }
     
 
@@ -49,8 +48,8 @@ public class Empleado extends Persona {
         this.sueldoFinal = sueldoFinal;
     }
     
-    public double calcularSalarioFinal(){
-        return sueldoHora * horasTrab;
+    public void calcularSalarioFinal(){
+        this.sueldoFinal =  sueldoHora * horasTrab;
     }
     
 }

@@ -9,36 +9,19 @@ package Ej2Vehiculos;
  * @author omargarcia
  */
 public class Motocicleta extends Vehiculo{
-    public boolean frenosABS;
-    public boolean cajuela;
 
     public Motocicleta() {
 
     }
 
-    public Motocicleta(boolean frenosABS, boolean cajuela, double velMax, double CombusPorKm, int cantLlantas) {
-        super(velMax, CombusPorKm, cantLlantas);
-        this.frenosABS = frenosABS;
-        this.cajuela = cajuela;
+    public Motocicleta( double velMax, double CombusPorKm) {
+        super(velMax, CombusPorKm);
+        setCantLlantas(2);
+        setTipoDeVehiculo("Motocicleta");
     }
 
 
 
-    public boolean isFrenosABS() {
-        return frenosABS;
-    }
-
-    public void setFrenosABS(boolean frenosABS) {
-        this.frenosABS = frenosABS;
-    }
-
-    public boolean isCajuela() {
-        return cajuela;
-    }
-
-    public void setCajuela(boolean cajuela) {
-        this.cajuela = cajuela;
-    }
     
     
     
