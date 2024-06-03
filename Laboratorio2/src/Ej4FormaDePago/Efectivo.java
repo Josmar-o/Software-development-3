@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Ej4FormaDePago;
-
 import java.time.LocalDate;
 
 /**
@@ -15,9 +14,10 @@ public class Efectivo extends FormaDePago {
         
     }
 
-    public Efectivo(double cantidad, LocalDate fechaDeTrans) {
-        super(cantidad, fechaDeTrans);
+    public Efectivo(double cantidad, LocalDate fechaDeTrans, boolean online) {
+        super(cantidad, fechaDeTrans, online);
+        setTipoDePago("Efectivo");
     }
-    
+
     
 }

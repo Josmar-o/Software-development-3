@@ -11,33 +11,17 @@ import java.time.LocalDate;
  * @author omargarcia
  */
 public class TarjetaDeCredito extends FormaDePago{
-    private double limiteCred;
-    private boolean online;
     
     public TarjetaDeCredito(){
         
     }
 
-    public TarjetaDeCredito(double limiteCred, double cantidad, LocalDate fechaDeTrans, boolean online) {
-        super(cantidad, fechaDeTrans);
-        this.online = online;
-        this.limiteCred = limiteCred;
+    public TarjetaDeCredito(double cantidad, LocalDate fechaDeTrans, boolean online) {
+        super(cantidad, fechaDeTrans, online);
+        setTipoDePago("Tarjeta de Credito");
     }
 
-    public double getLimiteCred() {
-        return limiteCred;
-    }
-
-    public void setLimiteCred(double limiteCred) {
-        this.limiteCred = limiteCred;
-    } 
-
-    public boolean isOnline() {
-        return online;
-    }
-
-    public void setOnline(boolean online) {
-        this.online = online;
-    }
     
+    
+  
 }

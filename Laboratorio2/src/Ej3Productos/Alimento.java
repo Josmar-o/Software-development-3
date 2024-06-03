@@ -3,46 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Ej3Productos;
-import java.time.LocalDate;
+
 
 /**
  *
  * @author omargarcia
  */
 public class Alimento extends Producto{
-    private LocalDate fechaExp;
-    private boolean esOrganico;
-    
+
     public Alimento(){
         
     }
 
-    public Alimento(LocalDate fechaExp, boolean esOrganico, String nombre, double precio, double impuesto, double descuento) {
-        super(nombre, precio, impuesto, descuento);
-        this.fechaExp = fechaExp;
-        this.esOrganico = esOrganico;
+    public Alimento(String marca, String nombre, double precio) {
+        super(marca, nombre, precio);
+        setTipo("Alimento");
     }
+    
+    @Override
+    public void calcularPrecioTotal(){
+        setDescuento(10);
+        setImpuesto(0);
+        this.precioTotal = precio -((this.descuento/100) * this.precio) + ((this.impuesto/100) * this.precio);
+    }
+    
+    
 
-    public LocalDate getFechaExp() {
-        return fechaExp;
-    }
-
-    public void setFechaExp(LocalDate fechaExp) {
-        this.fechaExp = fechaExp;
-    }
-
-    public boolean isEsOrganico() {
-        return esOrganico;
-    }
-
-    public void setEsOrganico(boolean esOrganico) {
-        this.esOrganico = esOrganico;
-    }
-    
-    
-    
-    
-    
-    
     
 }

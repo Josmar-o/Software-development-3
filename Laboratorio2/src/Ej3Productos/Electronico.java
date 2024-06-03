@@ -9,36 +9,20 @@ package Ej3Productos;
  * @author omargarcia
  */
 public class Electronico extends Producto{
-   private int garantiaAnios;
-   private String marca;
    public Electronico(){
        
    }
 
-    public Electronico(int garantiaAnios, String marca, String nombre, double precio, double impuesto, double descuento) {
-        super(nombre, precio, impuesto, descuento);      
-        this.marca = marca;
-        this.garantiaAnios = garantiaAnios;
-    }
-
-    public int getGarantiaAnios() {
-        return garantiaAnios;
-    }
-
-    public void setGarantiaAnios(int garantiaAnios) {
-        this.garantiaAnios = garantiaAnios;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public Electronico(String marca, String nombre, double precio) {
+        super(marca, nombre, precio);
+        setTipo("Electronico");
     }
     
-    
-   
-   
-    
+    @Override
+    public void calcularPrecioTotal(){
+        setDescuento(10);
+        setImpuesto(7);
+        this.precioTotal = precio -((this.descuento/100) * this.precio) + ((this.impuesto/100) * this.precio);
+    }
+ 
 }

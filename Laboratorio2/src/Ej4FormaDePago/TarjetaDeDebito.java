@@ -4,39 +4,24 @@
  */
 package Ej4FormaDePago;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author omargarcia
  */
-public class TarjetaDeDebito {
-    private boolean online;
-    private double SaldoDisponible;
+public class TarjetaDeDebito extends FormaDePago{
+
     
     public TarjetaDeDebito(){
         
     }
 
-    public TarjetaDeDebito(boolean online, double SaldoDisponible) {
-        this.online = online;
-        this.SaldoDisponible = SaldoDisponible;
-    }
-
-    public boolean isOnline() {
-        return online;
-    }
-
-    public void setOnline(boolean esOnline) {
-        this.online = esOnline;
-    }
-
-    public double getSaldoDisponible() {
-        return SaldoDisponible;
-    }
-
-    public void setSaldoDisponible(double SaldoDisponible) {
-        this.SaldoDisponible = SaldoDisponible;
+    public TarjetaDeDebito(double cantidad, LocalDate fechaDeTrans, boolean online) {
+        super(cantidad, fechaDeTrans, online);
+        setTipoDePago("Tarjeta de Debito");
     }
     
     
-    
+  
 }

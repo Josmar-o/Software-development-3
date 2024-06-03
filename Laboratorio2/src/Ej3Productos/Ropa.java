@@ -9,29 +9,20 @@ package Ej3Productos;
  * @author omargarcia
  */
 public class Ropa extends Producto{
-    private String material;
-    private String talla;
-    
+
     public Ropa(){ 
     }
 
-    public Ropa(String nombre, double precio, double impuesto, double descuento) {
-        super(nombre, precio, impuesto, descuento);
+    public Ropa(String marca, String nombre, double precio) {
+        super(marca, nombre, precio);
+        setTipo("Ropa");
+    }
+    
+    @Override
+    public void calcularPrecioTotal(){
+        setDescuento(20);
+        setImpuesto(7);
+        this.precioTotal = precio -((this.descuento/100) * this.precio) + ((this.impuesto/100) * this.precio);
     }
 
-    public String getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
-    }
-
-    public String getTalla() {
-        return talla;
-    }
-
-    public void setTalla(String talla) {
-        this.talla = talla;
-    }
 }

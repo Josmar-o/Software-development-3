@@ -8,22 +8,24 @@ package Ej3Productos;
  *
  * @author Omar Garcia
  */
-public class Producto {
-    private String nombre;
-    private double precio;
-    private double precioTotal; 
-    private double impuesto;
-    private double descuento;
+public abstract class Producto {
+    protected String marca;
+    protected String nombre;
+    private String tipo;
+    protected double precio;
+    protected double precioTotal; 
+    protected double impuesto;
+    protected double descuento;
+    
     
     public Producto(){
         
     }
 
-    public Producto(String nombre, double precio, double impuesto, double descuento) {
+    public Producto(String marca, String nombre, double precio) {
+        this.marca = marca;
         this.nombre = nombre;
         this.precio = precio;
-        this.impuesto = impuesto;
-        this.descuento = descuento;
         calcularPrecioTotal();
     }
 
@@ -58,9 +60,32 @@ public class Producto {
     public void setDescuento(double descuento) {
         this.descuento = descuento;
     }
-    
-    public void calcularPrecioTotal(){
-        this.precioTotal = precio -((this.descuento/100) * this.precio) + ((this.impuesto/100) * this.precio);
+
+    public String getMarca() {
+        return marca;
     }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
+    abstract void calcularPrecioTotal();
     
 }
