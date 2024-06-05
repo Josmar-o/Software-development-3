@@ -25,6 +25,10 @@ public class CuentaBancaria {
         this.saldo = saldo;
         this.numCuenta = numCuenta;
     }
+    public CuentaBancaria(String titular, int numCuenta) {
+        this.titular = titular;
+        this.numCuenta = numCuenta;
+    }
 
     public String getTitular() {
         return titular;

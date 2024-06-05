@@ -11,8 +11,8 @@ package Ej5CuentasBancarias;
 public class CuentaCorriente extends CuentaBancaria{
     private double limiteCredito;
 
-    public CuentaCorriente(String titular, double saldo, int numCuenta, double limiteCredito) {
-        super(titular, saldo, numCuenta);
+    public CuentaCorriente(String titular, int numCuenta, double limiteCredito) {
+        super(titular, numCuenta);
         this.limiteCredito = limiteCredito;
         this.saldo += this.limiteCredito;
         setTipoDeCuenta("Cuenta Corriente");
@@ -26,6 +26,15 @@ public class CuentaCorriente extends CuentaBancaria{
             
         }
     }
+
+    public double getLimiteCredito() {
+        return limiteCredito;
+    }
+
+    public void setLimiteCredito(double limiteCredito) {
+        this.limiteCredito = limiteCredito;
+    }
+    
 
 
     

@@ -20,7 +20,7 @@ public class CuentaDeAhorro extends CuentaBancaria{
         this.tasaInteres = 5;
     }
     
-    public double calcularInteres(int meses) {
+    public double calcularInteres() {
         double interes = this.saldo * tasaInteres / 100;
         return interes;
     }
