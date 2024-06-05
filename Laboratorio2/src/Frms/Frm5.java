@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Frms;
-import Ej3Productos.*;
+import Ej5CuentasBancarias.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -14,11 +14,11 @@ import javax.swing.table.DefaultTableModel;
  * @author Omar Garcia
  */
 public class Frm5 extends javax.swing.JFrame {
- 
-    private ArrayList<Ropa> listaRopa = new ArrayList<>();
-    private ArrayList<Electronico> listaElectronico = new ArrayList<>();
-    private ArrayList<Alimento> listaAlimento  = new ArrayList<>();
-    String tipoDeVehiculo;
+    
+    private ArrayList<CuentaCorriente> listaCuentaCorriente = new ArrayList<>();
+    private ArrayList<CuentaDeAhorro> listaCuentaDeAhorro = new ArrayList<>();
+    private ArrayList<CuentaDeInversion> listaCuentaDeInversion  = new ArrayList<>();
+    String tipo;
     public void clearEntries(){
         txtNombre.setText("");
         txtMarca.setText("");
@@ -28,21 +28,20 @@ public class Frm5 extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) table.getModel();
         modelo.setRowCount(0);
         
-        for(int i = 0; i < listaRopa.size(); i++){
-            Ropa ropa = listaRopa.get(i);
-            String [] arreglo = {ropa.getTipo(), ropa.getMarca(), ropa.getNombre(), String.valueOf(ropa.getPrecio()), String.valueOf(ropa.getImpuesto()), String.valueOf(ropa.getDescuento()), String.valueOf(ropa.getPrecioTotal()) };
+        for(int i = 0; i < listaCuentaCorriente.size(); i++){
+            CuentaCorriente cuentaCorriente = listaCuentaCorriente.get(i);
+            String [] arreglo = { };
             modelo.addRow(arreglo);    
           
         }
-        for(int i = 0; i < listaElectronico.size(); i++){
-            Electronico electronico = listaElectronico.get(i);
-            String [] arreglo = {electronico.getTipo(), electronico.getMarca(), electronico.getNombre(), String.valueOf(electronico.getPrecio()), String.valueOf(electronico.getImpuesto()), String.valueOf(electronico.getDescuento()), String.valueOf(electronico.getPrecioTotal()) };
+        for(int i = 0; i < listaCuentaDeAhorro.size(); i++){
+            CuentaDeAhorro cuentaAhorro = listaCuentaDeAhorro.get(i);
+            
             modelo.addRow(arreglo);    
           
         }
-        for(int i = 0; i < listaAlimento.size(); i++){
-            Alimento alimento = listaAlimento.get(i);
-            String [] arreglo = {alimento.getTipo(), alimento.getMarca(), alimento.getNombre(), String.valueOf(alimento.getPrecio()), String.valueOf(alimento.getImpuesto()), String.valueOf(alimento.getDescuento()), String.valueOf(alimento.getPrecioTotal()) };
+        for(int i = 0; i < listaCuentaDeInversion.size(); i++){
+            CuentaDeInversion cuentaInversion = listaCuentaDeInversion.get(i);
             modelo.addRow(arreglo);    
             
         }
@@ -79,6 +78,8 @@ public class Frm5 extends javax.swing.JFrame {
         btnMostrarRegistros = new javax.swing.JButton();
         lblCedula1 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         frmRegistros.setMinimumSize(new java.awt.Dimension(750, 500));
 
@@ -122,7 +123,7 @@ public class Frm5 extends javax.swing.JFrame {
         setTitle("Login");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Gestion y Calculo de Productos");
+        jLabel2.setText("Gestion de Cuentas Bancarias");
 
         lblCedula.setText("Precio");
 
@@ -159,37 +160,62 @@ public class Frm5 extends javax.swing.JFrame {
 
         lblCedula1.setText("Nombre:");
 
+        jButton1.setText("Depositar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Retirar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblVelMax)
-                            .addComponent(lblCedula1)
-                            .addComponent(lblTipo))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(67, 67, 67)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblVelMax)
+                                        .addComponent(lblCedula1)
+                                        .addComponent(lblTipo))
+                                    .addGap(18, 18, 18))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton1)
+                                    .addGap(33, 33, 33)))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(129, 129, 129)
+                                .addComponent(lblCedula)
+                                .addGap(33, 33, 33)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPrecio)
+                            .addComponent(txtMarca)
+                            .addComponent(txtNombre)
+                            .addComponent(cboTipo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnMostrarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36))
-                            .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(lblCedula)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPrecio))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel2)))
-                .addGap(0, 141, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,7 +239,10 @@ public class Frm5 extends javax.swing.JFrame {
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCedula))
                 .addGap(28, 28, 28)
-                .addComponent(btnRegistrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(26, 26, 26)
                 .addComponent(btnMostrarRegistros)
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -279,6 +308,14 @@ public class Frm5 extends javax.swing.JFrame {
         frmRegistros.setVisible(true);
     }//GEN-LAST:event_btnMostrarRegistrosActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -327,6 +364,8 @@ public class Frm5 extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboTipo;
     private javax.swing.JFrame frmRegistros;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
