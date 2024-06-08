@@ -70,6 +70,14 @@ public class Frm5 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         frmDeposito = new javax.swing.JFrame();
+        lblTipo1 = new javax.swing.JLabel();
+        cboTipo1 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtDeposito = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtDeposito1 = new javax.swing.JTextField();
+        btnDepositar = new javax.swing.JButton();
         frmRetiro = new javax.swing.JFrame();
         jLabel2 = new javax.swing.JLabel();
         lblCedula = new javax.swing.JLabel();
@@ -82,8 +90,8 @@ public class Frm5 extends javax.swing.JFrame {
         btnMostrarRegistros = new javax.swing.JButton();
         lblCedula1 = new javax.swing.JLabel();
         txtLimiteCredito = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnFrmDep = new javax.swing.JButton();
+        brnFrmRet = new javax.swing.JButton();
 
         frmRegistros.setMinimumSize(new java.awt.Dimension(750, 500));
 
@@ -123,15 +131,91 @@ public class Frm5 extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        lblTipo1.setText("Tipo:");
+
+        cboTipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta Corriente", "Cuenta De Ahorro", "Cuenta De Inversion" }));
+        cboTipo1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboTipo1ItemStateChanged(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setText("Deposito");
+
+        jLabel1.setText("Cantidad de Deposito:");
+
+        txtDeposito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDepositoActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Numero De Cuenta:");
+
+        txtDeposito1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDeposito1ActionPerformed(evt);
+            }
+        });
+
+        btnDepositar.setText("Depositar");
+        btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout frmDepositoLayout = new javax.swing.GroupLayout(frmDeposito.getContentPane());
         frmDeposito.getContentPane().setLayout(frmDepositoLayout);
         frmDepositoLayout.setHorizontalGroup(
             frmDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(frmDepositoLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(frmDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(frmDepositoLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtDeposito1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(frmDepositoLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(frmDepositoLayout.createSequentialGroup()
+                        .addComponent(lblTipo1)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(106, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmDepositoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(frmDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmDepositoLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(223, 223, 223))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmDepositoLayout.createSequentialGroup()
+                        .addComponent(btnDepositar)
+                        .addGap(216, 216, 216))))
         );
         frmDepositoLayout.setVerticalGroup(
             frmDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(frmDepositoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(frmDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTipo1))
+                .addGap(29, 29, 29)
+                .addGroup(frmDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(frmDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtDeposito1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(btnDepositar)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout frmRetiroLayout = new javax.swing.GroupLayout(frmRetiro.getContentPane());
@@ -162,6 +246,8 @@ public class Frm5 extends javax.swing.JFrame {
 
         lblVelMax.setText("Titular de la Cuenta:");
 
+        txtSaldo.setEnabled(false);
+
         txtTitular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTitularActionPerformed(evt);
@@ -186,17 +272,17 @@ public class Frm5 extends javax.swing.JFrame {
 
         lblCedula1.setText("Saldo Inicial:");
 
-        jButton1.setText("Depositar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnFrmDep.setText("Depositar");
+        btnFrmDep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnFrmDepActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Retirar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        brnFrmRet.setText("Retirar");
+        brnFrmRet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                brnFrmRetActionPerformed(evt);
             }
         });
 
@@ -222,7 +308,7 @@ public class Frm5 extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 10, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btnFrmDep)
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -231,13 +317,13 @@ public class Frm5 extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(brnFrmRet, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnMostrarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(189, 189, 189))
+                .addGap(194, 194, 194))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,11 +350,11 @@ public class Frm5 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(22, 22, 22)
+                    .addComponent(brnFrmRet)
+                    .addComponent(btnFrmDep))
+                .addGap(26, 26, 26)
                 .addComponent(btnMostrarRegistros)
-                .addGap(45, 45, 45))
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -344,13 +430,61 @@ public class Frm5 extends javax.swing.JFrame {
         frmRegistros.setVisible(true);
     }//GEN-LAST:event_btnMostrarRegistrosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnFrmDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFrmDepActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        frmDeposito.pack();
+        frmDeposito.setLocationRelativeTo(null);
+        frmDeposito.setVisible(true);
+    }//GEN-LAST:event_btnFrmDepActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void brnFrmRetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brnFrmRetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        frmRetiro.pack();
+        frmRetiro.setLocationRelativeTo(null);
+        frmRetiro.setVisible(true);
+    }//GEN-LAST:event_brnFrmRetActionPerformed
+
+    private void cboTipo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTipo1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboTipo1ItemStateChanged
+
+    private void txtDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepositoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDepositoActionPerformed
+
+    private void txtDeposito1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeposito1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDeposito1ActionPerformed
+
+    private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
+        // TODO add your handling code here:
+        String cant = txtSaldo.getText();
+        String numCuenta = txtSaldo.getText();
+        String tipo = cboTipo.getSelectedItem().toString();
+
+        // Validar que los campos requeridos no estén vacíos
+        if (cant.isEmpty() || numCuenta.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos requeridos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            if (tipo.equals("Cuenta Corriente")) {
+               
+            } else if (tipo.equals("Cuenta De Ahorro")) {
+                
+                
+            }else if(tipo.equals("Cuenta De Inversion")){
+                
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        clearEntries();
+        
+    }//GEN-LAST:event_btnDepositarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,23 +529,31 @@ public class Frm5 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton brnFrmRet;
+    private javax.swing.JButton btnDepositar;
+    private javax.swing.JButton btnFrmDep;
     private javax.swing.JButton btnMostrarRegistros;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboTipo;
+    private javax.swing.JComboBox<String> cboTipo1;
     private javax.swing.JFrame frmDeposito;
     private javax.swing.JFrame frmRegistros;
     private javax.swing.JFrame frmRetiro;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblCedula1;
     private javax.swing.JLabel lblTipo;
+    private javax.swing.JLabel lblTipo1;
     private javax.swing.JLabel lblVelMax;
+    private javax.swing.JTextField txtDeposito;
+    private javax.swing.JTextField txtDeposito1;
     private javax.swing.JTextField txtLimiteCredito;
     private javax.swing.JTextField txtSaldo;
     private javax.swing.JTextField txtTitular;

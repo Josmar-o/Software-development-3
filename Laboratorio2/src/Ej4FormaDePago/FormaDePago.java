@@ -24,6 +24,10 @@ public class FormaDePago {
         this.fechaDeTrans = fechaDeTrans;
         this.online = online;
     }
+        public FormaDePago(double cantidad, LocalDate fechaDeTrans) {
+        this.cantidad = cantidad;
+        this.fechaDeTrans = fechaDeTrans;
+    }
 
 
     public double getCantidad() {
@@ -57,6 +61,7 @@ public class FormaDePago {
     public void setTipoDePago(String tipoDePago) {
         this.tipoDePago = tipoDePago;
     }
+    
     
     
     

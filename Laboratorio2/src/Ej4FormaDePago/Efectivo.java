@@ -14,9 +14,10 @@ public class Efectivo extends FormaDePago {
         
     }
 
-    public Efectivo(double cantidad, LocalDate fechaDeTrans, boolean online) {
-        super(cantidad, fechaDeTrans, online);
+    public Efectivo(double cantidad, LocalDate fechaDeTrans) {
+        super(cantidad, fechaDeTrans);
         setTipoDePago("Efectivo");
+        setOnline(false);
     }
 
     

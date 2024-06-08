@@ -94,8 +94,8 @@ public class Frm4 extends javax.swing.JFrame {
 
         frmRegistros.setMinimumSize(new java.awt.Dimension(750, 500));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Registros de Pagos");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,8 +133,8 @@ public class Frm4 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Gestion de Pagos");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         lblCedula.setText("¿Es online?");
 
@@ -170,6 +170,8 @@ public class Frm4 extends javax.swing.JFrame {
         });
 
         lblCedula1.setText("Fecha de Transaccion");
+
+        checkOnline.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,7 +233,7 @@ public class Frm4 extends javax.swing.JFrame {
                     .addComponent(lblCedula1)
                     .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCedula)
                     .addComponent(checkOnline))
                 .addGap(18, 18, 18)
@@ -261,7 +263,7 @@ public class Frm4 extends javax.swing.JFrame {
 
         try {
             if (tipo.equals("Efectivo")) {
-                Efectivo efectivo  = new Efectivo(Double.parseDouble(cantidad), fechaDeTrans, online);
+                Efectivo efectivo  = new Efectivo(Double.parseDouble(cantidad), fechaDeTrans);
                 listaEfectivo.add(efectivo);
                 cargarRegitros(jTable1);
             } else if (tipo.equals("Transferencia Bancaria")) {
@@ -291,6 +293,18 @@ public class Frm4 extends javax.swing.JFrame {
 
     private void cboTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTipoItemStateChanged
         // TODO add your handling code here:
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            String tipo = cboTipo.getSelectedItem().toString();
+            if (tipo.equals("Efectivo")) {
+                checkOnline.setEnabled(false);
+
+            } else if (tipo.equals("Cuenta De Ahorro") || tipo.equals("Tarjeta de Debito")  || tipo.equals("Tarjeta de Credito")){
+               
+
+
+               checkOnline.setEnabled(true);
+            }
+        }
         
     }//GEN-LAST:event_cboTipoItemStateChanged
 

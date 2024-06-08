@@ -41,10 +41,10 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Registros de Pagos"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Registros de Pagos"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -195,7 +195,7 @@
                   <Component id="datePicker" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblCedula" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="checkOnline" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -211,10 +211,10 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Gestion de Pagos"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Gestion de Pagos"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCedula">
@@ -277,6 +277,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="checkOnline">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePicker">
     </Component>
