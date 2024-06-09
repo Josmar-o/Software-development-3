@@ -25,8 +25,16 @@ public class Frm5 extends javax.swing.JFrame {
         txtTitular.setText("");
         txtLimiteCredito.setText("");
     }
-        private void cargarRegitros(JTable table){
-        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+    public void clearEntriesDep(){
+        txtDeposito.setText("");
+        txtNumCuenDe.setText("");
+    }
+    public void clearEntriesRe(){
+        txtRetiro.setText("");
+        txtNumCuenRe.setText("");
+    }
+        private void cargarRegitros(){
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setRowCount(0);
         
         for(int i = 0; i < listaCuentaCorriente.size(); i++){
@@ -71,14 +79,22 @@ public class Frm5 extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         frmDeposito = new javax.swing.JFrame();
         lblTipo1 = new javax.swing.JLabel();
-        cboTipo1 = new javax.swing.JComboBox<>();
+        cboTipoDe = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtDeposito = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtDeposito1 = new javax.swing.JTextField();
+        txtNumCuenDe = new javax.swing.JTextField();
         btnDepositar = new javax.swing.JButton();
         frmRetiro = new javax.swing.JFrame();
+        cboTipoRe = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtRetiro = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtNumCuenRe = new javax.swing.JTextField();
+        btnRetirar = new javax.swing.JButton();
+        lblTipo2 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblCedula = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
@@ -133,10 +149,10 @@ public class Frm5 extends javax.swing.JFrame {
 
         lblTipo1.setText("Tipo:");
 
-        cboTipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta Corriente", "Cuenta De Ahorro", "Cuenta De Inversion" }));
-        cboTipo1.addItemListener(new java.awt.event.ItemListener() {
+        cboTipoDe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta Corriente", "Cuenta De Ahorro", "Cuenta De Inversion" }));
+        cboTipoDe.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cboTipo1ItemStateChanged(evt);
+                cboTipoDeItemStateChanged(evt);
             }
         });
 
@@ -153,9 +169,9 @@ public class Frm5 extends javax.swing.JFrame {
 
         jLabel5.setText("Numero De Cuenta:");
 
-        txtDeposito1.addActionListener(new java.awt.event.ActionListener() {
+        txtNumCuenDe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDeposito1ActionPerformed(evt);
+                txtNumCuenDeActionPerformed(evt);
             }
         });
 
@@ -176,7 +192,7 @@ public class Frm5 extends javax.swing.JFrame {
                     .addGroup(frmDepositoLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(txtDeposito1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNumCuenDe, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(frmDepositoLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -184,7 +200,7 @@ public class Frm5 extends javax.swing.JFrame {
                     .addGroup(frmDepositoLayout.createSequentialGroup()
                         .addComponent(lblTipo1)
                         .addGap(18, 18, 18)
-                        .addComponent(cboTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cboTipoDe, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(106, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmDepositoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,7 +219,7 @@ public class Frm5 extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(frmDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboTipoDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTipo1))
                 .addGap(29, 29, 29)
                 .addGroup(frmDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -212,21 +228,94 @@ public class Frm5 extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(frmDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtDeposito1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNumCuenDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(btnDepositar)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
+        cboTipoRe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta Corriente", "Cuenta De Ahorro", "Cuenta De Inversion" }));
+        cboTipoRe.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboTipoReItemStateChanged(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Retiro");
+
+        jLabel7.setText("Cantidad de Retiro:");
+
+        txtRetiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRetiroActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Numero De Cuenta:");
+
+        txtNumCuenRe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumCuenReActionPerformed(evt);
+            }
+        });
+
+        btnRetirar.setText("Retirar");
+        btnRetirar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetirarActionPerformed(evt);
+            }
+        });
+
+        lblTipo2.setText("Tipo:");
+
         javax.swing.GroupLayout frmRetiroLayout = new javax.swing.GroupLayout(frmRetiro.getContentPane());
         frmRetiro.getContentPane().setLayout(frmRetiroLayout);
         frmRetiroLayout.setHorizontalGroup(
             frmRetiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmRetiroLayout.createSequentialGroup()
+                .addContainerGap(197, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(223, 223, 223))
+            .addGroup(frmRetiroLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(frmRetiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(frmRetiroLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(frmRetiroLayout.createSequentialGroup()
+                        .addComponent(lblTipo2)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboTipoRe, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(frmRetiroLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(frmRetiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRetirar)
+                            .addComponent(txtNumCuenRe, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         frmRetiroLayout.setVerticalGroup(
             frmRetiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(frmRetiroLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addGroup(frmRetiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboTipoRe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTipo2))
+                .addGap(29, 29, 29)
+                .addGroup(frmRetiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(frmRetiroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtNumCuenRe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(btnRetirar)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -378,18 +467,18 @@ public class Frm5 extends javax.swing.JFrame {
             if (tipo.equals("Cuenta Corriente")) {
                CuentaCorriente cuentaCorriente = new CuentaCorriente(txtTitular.getText(),x, Double.parseDouble(txtLimiteCredito.getText()) );
                 listaCuentaCorriente.add(cuentaCorriente);
-                cargarRegitros(jTable1);
+                
                 x++;
             } else if (tipo.equals("Cuenta De Ahorro")) {
                 CuentaDeAhorro cuentaAhorro = new CuentaDeAhorro(txtTitular.getText(), Double.parseDouble(txtSaldo.getText()),y);
                 listaCuentaDeAhorro.add(cuentaAhorro);
-                cargarRegitros(jTable1);
+                
                 y++;
                 
             }else if(tipo.equals("Cuenta De Inversion")){
                 CuentaDeInversion cuentaInversion = new CuentaDeInversion(txtTitular.getText(), Double.parseDouble(txtSaldo.getText()),z);
                 listaCuentaDeInversion.add(cuentaInversion);
-                cargarRegitros(jTable1);
+                
                 z++;
             }
         } catch (NumberFormatException e) {
@@ -425,6 +514,7 @@ public class Frm5 extends javax.swing.JFrame {
 
     private void btnMostrarRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarRegistrosActionPerformed
         // TODO add your handling code here:
+        cargarRegitros();
         frmRegistros.pack();
         frmRegistros.setLocationRelativeTo(null);
         frmRegistros.setVisible(true);
@@ -444,23 +534,24 @@ public class Frm5 extends javax.swing.JFrame {
         frmRetiro.setVisible(true);
     }//GEN-LAST:event_brnFrmRetActionPerformed
 
-    private void cboTipo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTipo1ItemStateChanged
+    private void cboTipoDeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTipoDeItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboTipo1ItemStateChanged
+    }//GEN-LAST:event_cboTipoDeItemStateChanged
 
     private void txtDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepositoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDepositoActionPerformed
 
-    private void txtDeposito1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeposito1ActionPerformed
+    private void txtNumCuenDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumCuenDeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDeposito1ActionPerformed
+    }//GEN-LAST:event_txtNumCuenDeActionPerformed
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
         // TODO add your handling code here:
-        String cant = txtSaldo.getText();
-        String numCuenta = txtSaldo.getText();
+        String cant = txtDeposito.getText();
+        String numCuenta = txtNumCuenDe.getText();
         String tipo = cboTipo.getSelectedItem().toString();
+        
 
         // Validar que los campos requeridos no estén vacíos
         if (cant.isEmpty() || numCuenta.isEmpty()){
@@ -469,22 +560,90 @@ public class Frm5 extends javax.swing.JFrame {
         }
 
         try {
-            if (tipo.equals("Cuenta Corriente")) {
+           try{
+                int i = Integer.valueOf(numCuenta) - 1;
+                double cantDo = Double.valueOf(cant);
+            
+                if (tipo.equals("Cuenta Corriente")) {
+                    CuentaCorriente cuentaCorriente = listaCuentaCorriente.get(i);
+                    cuentaCorriente.depositar(cantDo);
                
-            } else if (tipo.equals("Cuenta De Ahorro")) {
+                } else if (tipo.equals("Cuenta De Ahorro")) {
+                    CuentaDeAhorro cuentaDeAhorro  = listaCuentaDeAhorro.get(i);
+                    cuentaDeAhorro.depositar(cantDo);
                 
-                
-            }else if(tipo.equals("Cuenta De Inversion")){
-                
+                }else if(tipo.equals("Cuenta De Inversion")){
+                    CuentaDeInversion cuentaDeInversion = listaCuentaDeInversion.get(i);
+                    cuentaDeInversion.depositar(cantDo);
             }
+               
+           } catch(IndexOutOfBoundsException e){
+               JOptionPane.showMessageDialog(this, "Ingrese un numero de Cuenta Valido\n Verifique los Registros si es Necesario", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+           }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-        clearEntries();
+        JOptionPane.showMessageDialog(null, "Deposito de: $"+ cant + " completado");
+        clearEntriesDep();
         
     }//GEN-LAST:event_btnDepositarActionPerformed
+
+    private void cboTipoReItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTipoReItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboTipoReItemStateChanged
+
+    private void txtRetiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRetiroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRetiroActionPerformed
+
+    private void txtNumCuenReActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumCuenReActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumCuenReActionPerformed
+
+    private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
+        // TODO add your handling code here:
+        String cant = txtRetiro.getText();
+        String numCuenta = txtNumCuenRe.getText();
+        String tipo = cboTipo.getSelectedItem().toString();
+        
+
+        // Validar que los campos requeridos no estén vacíos
+        if (cant.isEmpty() || numCuenta.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos requeridos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+           try{
+                int i = Integer.valueOf(numCuenta) - 1;
+                double cantRe = Double.valueOf(cant);
+            
+                if (tipo.equals("Cuenta Corriente")) {
+                    CuentaCorriente cuentaCorriente = listaCuentaCorriente.get(i);
+                    cuentaCorriente.retirar(cantRe);
+               
+                } else if (tipo.equals("Cuenta De Ahorro")) {
+                    CuentaDeAhorro cuentaDeAhorro  = listaCuentaDeAhorro.get(i);
+                    cuentaDeAhorro.retirar(cantRe);
+                
+                }else if(tipo.equals("Cuenta De Inversion")){
+                    CuentaDeInversion cuentaDeInversion = listaCuentaDeInversion.get(i);
+                    cuentaDeInversion.retirar(cantRe);
+            }
+               
+           } catch(IndexOutOfBoundsException e){
+               JOptionPane.showMessageDialog(this, "Ingrese un numero de Cuenta Valido\n Verifique los Registros si es Necesario", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+           }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Retiro de: $"+ cant + " completado");
+        clearEntriesRe();
+    }//GEN-LAST:event_btnRetirarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,9 +693,11 @@ public class Frm5 extends javax.swing.JFrame {
     private javax.swing.JButton btnFrmDep;
     private javax.swing.JButton btnMostrarRegistros;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnRetirar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboTipo;
-    private javax.swing.JComboBox<String> cboTipo1;
+    private javax.swing.JComboBox<String> cboTipoDe;
+    private javax.swing.JComboBox<String> cboTipoRe;
     private javax.swing.JFrame frmDeposito;
     private javax.swing.JFrame frmRegistros;
     private javax.swing.JFrame frmRetiro;
@@ -545,16 +706,22 @@ public class Frm5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblCedula1;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JLabel lblTipo1;
+    private javax.swing.JLabel lblTipo2;
     private javax.swing.JLabel lblVelMax;
     private javax.swing.JTextField txtDeposito;
-    private javax.swing.JTextField txtDeposito1;
     private javax.swing.JTextField txtLimiteCredito;
+    private javax.swing.JTextField txtNumCuenDe;
+    private javax.swing.JTextField txtNumCuenRe;
+    private javax.swing.JTextField txtRetiro;
     private javax.swing.JTextField txtSaldo;
     private javax.swing.JTextField txtTitular;
     // End of variables declaration//GEN-END:variables

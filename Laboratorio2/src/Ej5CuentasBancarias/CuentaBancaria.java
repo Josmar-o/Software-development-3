@@ -4,6 +4,8 @@
  */
 package Ej5CuentasBancarias;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Omar Garcia
@@ -69,6 +71,9 @@ public class CuentaBancaria {
     public void retirar(double cantidad) {
         if (cantidad <= saldo) {
             saldo -= cantidad;
+        }else{
+            JOptionPane.showMessageDialog(null, "La cantidad supera el Saldo");
         }
+            
     }
 }

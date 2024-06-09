@@ -4,12 +4,17 @@
  */
 package Ej5CuentasBancarias;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Omar Garcia
  */
 public class CuentaCorriente extends CuentaBancaria{
     private double limiteCredito;
+    public CuentaCorriente(){
+        
+    }
 
     public CuentaCorriente(String titular, int numCuenta, double limiteCredito) {
         super(titular, numCuenta);
@@ -23,7 +28,7 @@ public class CuentaCorriente extends CuentaBancaria{
         if (saldo + cantidad <= limiteCredito) {
             saldo += cantidad;
         } else {
-            
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad no superior al Limite de Credito");
         }
     }
 
