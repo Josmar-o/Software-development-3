@@ -8,7 +8,7 @@ package Ej1Empleados;
  *
  * @author omargarcia
  */
-public class Persona {
+public abstract class Persona {
     public String cedula;
     public String domicilio;
     public String nombre;
@@ -46,6 +46,6 @@ public class Persona {
         this.nombre = nombre;
     }
     
-    
+    public abstract String mostrarDetalles();
     
 }

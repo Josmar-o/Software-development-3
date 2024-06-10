@@ -51,5 +51,8 @@ public class Empleado extends Persona {
     public void calcularSalarioFinal(){
         this.sueldoFinal =  sueldoHora * horasTrab;
     }
-    
+    @Override
+    public String mostrarDetalles() {
+        return "Empleado: " + nombre + ", Cédula: " + cedula + ", Domicilio: " + domicilio + ", Sueldo por Hora: " + sueldoHora + ", Horas Trabajadas: " + horasTrab + ", Sueldo Final: " + sueldoFinal;
+    }
 }

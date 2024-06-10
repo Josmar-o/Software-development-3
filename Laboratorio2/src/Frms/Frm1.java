@@ -163,7 +163,7 @@ public class Frm1 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -263,7 +263,7 @@ public class Frm1 extends javax.swing.JFrame {
                         .addComponent(txtLimiteCredito)
                         .addComponent(txtHorasTrabajadas)
                         .addComponent(txtSalarioPorHora))
-                    .addContainerGap(105, Short.MAX_VALUE)))
+                    .addContainerGap(106, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

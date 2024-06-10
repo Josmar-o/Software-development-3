@@ -20,8 +20,6 @@ public class CuentaBancaria {
 
     }
     
-    
-
     public CuentaBancaria(String titular, double saldo, int numCuenta) {
         this.titular = titular;
         this.saldo = saldo;

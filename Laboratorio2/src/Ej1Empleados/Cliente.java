@@ -28,6 +28,9 @@ public class Cliente extends Persona{
     public void setLimCred(int limCred) {
         this.limCred = limCred;
     }
-    
+    @Override
+    public String mostrarDetalles() {
+        return "Cliente: " + nombre + ", Cédula: " + cedula + ", Domicilio: " + domicilio + ", Límite de Crédito: " + limCred;
+    }
     
 }

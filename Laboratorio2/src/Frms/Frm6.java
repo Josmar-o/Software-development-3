@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Frms;
-import Ej3Productos.*;
+import Ej6Libros.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -13,44 +13,39 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Omar Garcia
  */
-public class Frm3 extends javax.swing.JFrame {
- 
-    private ArrayList<Ropa> listaRopa = new ArrayList<>();
-    private ArrayList<Electronico> listaElectronico = new ArrayList<>();
-    private ArrayList<Alimento> listaAlimento  = new ArrayList<>();
-    String tipoDeVehiculo;
+public class Frm6 extends javax.swing.JFrame {
+    private ArrayList<Libro> listaLibros = new ArrayList<>();
+    private ArrayList<CD> listaCD = new ArrayList<>();
+
+    String tipo;
     public void clearEntries(){
         txtNombre.setText("");
-        txtMarca.setText("");
+        txtNumPag.setText("");
         txtPrecio.setText("");
+        txtMinRep.setText("");
     }
-        private void cargarRegitros(JTable table){
-        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+        private void cargarRegitros(){
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setRowCount(0);
         
-        for(int i = 0; i < listaRopa.size(); i++){
-            Ropa ropa = listaRopa.get(i);
-            String [] arreglo = {ropa.getTipo(), ropa.getMarca(), ropa.getNombre(), String.valueOf(ropa.getPrecio()), String.valueOf(ropa.getImpuesto()), String.valueOf(ropa.getDescuento()), String.valueOf(ropa.getPrecioTotal()) };
+        for(int i = 0; i < listaLibros.size(); i++){
+            Libro libro = listaLibros.get(i);
+            String [] arreglo = {libro.getTipo(), libro.getTitulo(), "$" +libro.getPrecioInicial() , libro.getNumPag() + "", "No posee", libro.getDescuento()+ "%", "$" + libro.getPrecioFinal()};
             modelo.addRow(arreglo);    
           
         }
-        for(int i = 0; i < listaElectronico.size(); i++){
-            Electronico electronico = listaElectronico.get(i);
-            String [] arreglo = {electronico.getTipo(), electronico.getMarca(), electronico.getNombre(), String.valueOf(electronico.getPrecio()), String.valueOf(electronico.getImpuesto()), String.valueOf(electronico.getDescuento()), String.valueOf(electronico.getPrecioTotal()) };
-            modelo.addRow(arreglo);    
+        for(int i = 0; i < listaCD.size(); i++){
+            CD cd = listaCD.get(i);
+             String [] arreglo = {cd.getTipo(), cd.getTitulo(), "$" +cd.getPrecioInicial() , "No posee", cd.getMinReproduccion() + "min", cd.getDescuento()+ "%", "$" + cd.getPrecioFinal()};
+             modelo.addRow(arreglo);    
           
         }
-        for(int i = 0; i < listaAlimento.size(); i++){
-            Alimento alimento = listaAlimento.get(i);
-            String [] arreglo = {alimento.getTipo(), alimento.getMarca(), alimento.getNombre(), String.valueOf(alimento.getPrecio()), String.valueOf(alimento.getImpuesto()), String.valueOf(alimento.getDescuento()), String.valueOf(alimento.getPrecioTotal()) };
-            modelo.addRow(arreglo);    
-            
-        }
+        
          }
         
 
    
-    public Frm3() {
+    public Frm6() {
         initComponents();
     }
 
@@ -71,26 +66,28 @@ public class Frm3 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblCedula = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
-        lblVelMax = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtMarca = new javax.swing.JTextField();
         lblTipo = new javax.swing.JLabel();
         cboTipo = new javax.swing.JComboBox<>();
         btnMostrarRegistros = new javax.swing.JButton();
         lblCedula1 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
+        lblVelMax = new javax.swing.JLabel();
+        txtNumPag = new javax.swing.JTextField();
+        lblVelMax1 = new javax.swing.JLabel();
+        txtMinRep = new javax.swing.JTextField();
 
         frmRegistros.setMinimumSize(new java.awt.Dimension(750, 500));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Registros de Productos");
+        jLabel3.setText("Registros de Libros/ Audio Libros CD");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Tipo de Productos", "Marca o Empresa", "Nombre", "Precio", "Impuestos (%)", "Descuentos (%)", "Precio Total"
+                "Tipo de Productos", "Nombre", "Precio", "Numeros de Pag", "Minutos de Reproduccion", "Descuentos (%)", "Total (+7%itbms)"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -122,7 +119,7 @@ public class Frm3 extends javax.swing.JFrame {
         setTitle("Login");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Gestion y Calculo de Productos");
+        jLabel2.setText("Editorial");
 
         lblCedula.setText("Precio");
 
@@ -133,17 +130,9 @@ public class Frm3 extends javax.swing.JFrame {
             }
         });
 
-        lblVelMax.setText("Marca o Empresa:");
-
-        txtMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMarcaActionPerformed(evt);
-            }
-        });
-
         lblTipo.setText("Tipo:");
 
-        cboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electronico", "Alimento", "Ropa" }));
+        cboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro", "CD" }));
         cboTipo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboTipoItemStateChanged(evt);
@@ -157,7 +146,13 @@ public class Frm3 extends javax.swing.JFrame {
             }
         });
 
-        lblCedula1.setText("Nombre:");
+        lblCedula1.setText("Nombre");
+
+        lblVelMax.setText("Numero de Pag:");
+
+        lblVelMax1.setText("Tiempo en Minutos:");
+
+        txtMinRep.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,30 +161,38 @@ public class Frm3 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblVelMax)
-                            .addComponent(lblCedula1)
-                            .addComponent(lblTipo))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnMostrarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36))
-                            .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(75, 75, 75))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(lblCedula)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPrecio))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel2)))
-                .addGap(0, 141, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(135, 135, 135)
+                                .addComponent(lblTipo))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblVelMax, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblCedula, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblCedula1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblVelMax1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPrecio)
+                            .addComponent(txtNumPag)
+                            .addComponent(txtMinRep)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(btnMostrarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(34, 34, 34))
+                                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cboTipo, javax.swing.GroupLayout.Alignment.LEADING, 0, 209, Short.MAX_VALUE)))
+                                .addGap(0, 6, Short.MAX_VALUE)))))
+                .addGap(141, 141, 141))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,26 +200,32 @@ public class Frm3 extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTipo)
+                            .addComponent(cboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCedula1))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblCedula)
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblVelMax, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNumPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTipo)
-                    .addComponent(cboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblVelMax1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMinRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVelMax))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCedula1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCedula))
-                .addGap(28, 28, 28)
                 .addComponent(btnRegistrar)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMostrarRegistros)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(0, 31, Short.MAX_VALUE))
         );
 
         pack();
@@ -226,30 +235,27 @@ public class Frm3 extends javax.swing.JFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
         String nombre = txtNombre.getText();
-        String marca = txtMarca.getText();
+        String numPag = txtNumPag.getText();
+        String minRep = txtMinRep.getText();
         String precio = txtPrecio.getText();
         String tipo = cboTipo.getSelectedItem().toString();
 
         // Validar que los campos requeridos no estén vacíos
-        if ( nombre.isEmpty() || marca.isEmpty() || precio.isEmpty()){
+        if ( nombre.isEmpty() || precio.isEmpty()){
             JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos requeridos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         try {
-            if (tipo.equals("Electronico")) {
-               Electronico electronico = new Electronico(marca, nombre, Double.parseDouble(precio));
-                listaElectronico.add(electronico);
-                cargarRegitros(jTable1);
-            } else if (tipo.equals("Alimento")) {
-                Alimento alimento = new Alimento(marca, nombre, Double.parseDouble(precio));
-                listaAlimento.add(alimento);
-                cargarRegitros(jTable1);
+            if (tipo.equals("Libro")) {
+                Libro libro = new Libro(nombre, Double.parseDouble(precio), Integer.valueOf(numPag));
+                listaLibros.add(libro);
+               
+            } else if (tipo.equals("CD")) {
+                CD cd = new CD(nombre, Double.parseDouble(precio), Double.parseDouble(minRep));
+                listaCD.add(cd);
+              
                 
-            }else if(tipo.equals("Ropa")){
-                Ropa ropa = new Ropa(marca, nombre, Double.parseDouble(precio));
-                listaRopa.add(ropa);
-                cargarRegitros(jTable1);
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -264,16 +270,21 @@ public class Frm3 extends javax.swing.JFrame {
 
     private void cboTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTipoItemStateChanged
         // TODO add your handling code here:
-        
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            String tipo = cboTipo.getSelectedItem().toString();
+            if (tipo.equals("Libro")) {
+                txtMinRep.setEnabled(false);
+                txtNumPag.setEnabled(true);
+            } else if (tipo.equals("CD")){
+               txtMinRep.setEnabled(true);
+                txtNumPag.setEnabled(false);
+            }
+        }
     }//GEN-LAST:event_cboTipoItemStateChanged
-
-    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtMarcaActionPerformed
 
     private void btnMostrarRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarRegistrosActionPerformed
         // TODO add your handling code here:
+        cargarRegitros();
         frmRegistros.pack();
         frmRegistros.setLocationRelativeTo(null);
         frmRegistros.setVisible(true);
@@ -296,14 +307,18 @@ public class Frm3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frm3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frm3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frm3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frm3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -312,7 +327,7 @@ public class Frm3 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm3().setVisible(true);
+                new Frm6().setVisible(true);
             }
         });
     }
@@ -331,8 +346,10 @@ public class Frm3 extends javax.swing.JFrame {
     private javax.swing.JLabel lblCedula1;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JLabel lblVelMax;
-    private javax.swing.JTextField txtMarca;
+    private javax.swing.JLabel lblVelMax1;
+    private javax.swing.JTextField txtMinRep;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNumPag;
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }
