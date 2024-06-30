@@ -102,7 +102,7 @@ private void mostrarImagen(String rutaImagen) {
 
 
     private void cargarDatosTabla() {
-        try (Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestiondevehiculos", "root", "0000")) {
+        try (Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestiondevehiculos", "root", "Password-19")) {
             Statement statement = conexion.createStatement();
             String sql = "SELECT * FROM Vehiculos";
             ResultSet resultSet = statement.executeQuery(sql);

@@ -74,7 +74,7 @@ public class FrmRegistro extends javax.swing.JDialog {
  public static void cargarDatosVehiculo(String tipoDeVehiculo, String marca, String modelo, int anio, double precioPorDia, String imagenPath) {
          final String URL = "jdbc:mysql://localhost:3306/gestiondevehiculos";
          final String USUARIO = "root";
-        final String CONTRASENA = "0000";
+        final String CONTRASENA = "Password-19";
 
         Connection conexion = null;
         PreparedStatement statement = null;
