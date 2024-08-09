@@ -4,9 +4,12 @@
  */
 package Frms;
 import Clases.Empleado;
+import Clases.Planilla;
 import Metodos.MetodosEmpleados;
+import Metodos.MetodosPlanilla;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,10 +18,12 @@ import javax.swing.table.DefaultTableModel;
  * @author omargarcia
  */
 public class frmDetallePlanilla extends javax.swing.JFrame {
-    private void cargarRegitros(JTable table){
+    
+    
+    public void cargarRegitrosDetalles(int idPlanilla){
         DefaultTableModel modelo = (DefaultTableModel) table.getModel();
         modelo.setRowCount(0);
-        ArrayList <Empleado> listaEmpleados = MetodosEmpleados.cargarEmpleados();
+        ArrayList <Empleado> listaEmpleados = MetodosPlanilla.obtenerDetallePlanilla(idPlanilla);
         
         for(int i = 0; i < listaEmpleados.size(); i++){
             Empleado empleado = listaEmpleados.get(i);
@@ -44,7 +49,7 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
@@ -59,11 +64,11 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
         jLabel1.setText("Calculo de Planilla");
 
-        jTable.setBackground(new java.awt.Color(153, 204, 255));
-        jTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
-        jTable.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTable.setForeground(new java.awt.Color(255, 255, 255));
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
+        table.setBackground(new java.awt.Color(153, 204, 255));
+        table.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
+        table.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        table.setForeground(new java.awt.Color(255, 255, 255));
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -71,8 +76,13 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
                 "Cedula", "Fecha Nacimeinto", "Nombre 1", "Nombre 2", "Apellido 1", "Apellido 2", "Horas Trab", "Salario H", "Salario Bruto", "Seguro S", "Seguro E", "Salario Neto"
             }
         ));
-        jTable.setGridColor(new java.awt.Color(51, 153, 255));
-        jScrollPane1.setViewportView(jTable);
+        table.setGridColor(new java.awt.Color(51, 153, 255));
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(table);
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 153, 255));
@@ -147,12 +157,12 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,14 +175,13 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        try{
-            cargarRegitros(jTable);
-        }catch (Exception e) {
-         
-        }
-        
-        
+
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_tableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -218,7 +227,7 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable;
+    private javax.swing.JTable table;
     private javax.swing.JTextField txtCedula;
     // End of variables declaration//GEN-END:variables
 }

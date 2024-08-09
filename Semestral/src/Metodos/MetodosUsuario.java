@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.sql.CallableStatement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.sql.Date;
 
 /**
  *
@@ -22,6 +23,24 @@ public class MetodosUsuario {
     // Método para crear la conexión con la base de datos
     private static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL);
+    }
+     public static void registrarUsuario(Usuario usuario) {
+        String query = "{call sp_registrarUsuario(?, ?, ?, ?, ?, ?, ?)}";
+        
+        try (Connection conn = getConnection();
+             CallableStatement stmt = conn.prepareCall(query)) {
+            stmt.setString(1, usuario.getCedula());
+            stmt.setString(2, usuario.getUserID());
+            stmt.setString(3, usuario.getContrasena());
+            stmt.setString(4, usuario.getNombre());
+            stmt.setString(5, usuario.getApellido());
+            stmt.setString(6, usuario.getDireccion());
+            stmt.setDate(7, Date.valueOf(usuario.getFechaIngreso()));
+            
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     
     public static ArrayList<Usuario> cargarUsuarios() {

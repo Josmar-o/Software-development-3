@@ -28,6 +28,7 @@ public class Usuario {
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
+        this.fechaIngreso = fechaIngreso;
     }
 
     public String getUserID() {
@@ -89,9 +90,9 @@ public class Usuario {
     public static boolean verificarContra(String contra1, String contra2){
             if(contra1.equals(contra2)){
                 return true;
-            }else{
-                return false;
             }
+                return false;
+            
         }
-    
+     
 }

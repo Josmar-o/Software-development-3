@@ -33,12 +33,13 @@ public class frmPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnUsuario = new javax.swing.JButton();
         btnEmpleados = new javax.swing.JButton();
-        btnPlanilla = new javax.swing.JButton();
+        btnVerPlanilla = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnPlanilla1 = new javax.swing.JButton();
+        btnGenerarPlanilla = new javax.swing.JButton();
+        btnVerEmpleados = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -63,7 +64,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnEmpleados.setBackground(new java.awt.Color(100, 177, 255));
         btnEmpleados.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnEmpleados.setForeground(new java.awt.Color(255, 255, 255));
-        btnEmpleados.setText("Registrar Empleados");
+        btnEmpleados.setText("Registrar/Editar Empleados");
+        btnEmpleados.setToolTipText("");
         btnEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
         btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,14 +73,14 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnPlanilla.setBackground(new java.awt.Color(109, 201, 162));
-        btnPlanilla.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnPlanilla.setForeground(new java.awt.Color(255, 255, 255));
-        btnPlanilla.setText("Ver Planilla");
-        btnPlanilla.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(109, 201, 162), 1, true));
-        btnPlanilla.addActionListener(new java.awt.event.ActionListener() {
+        btnVerPlanilla.setBackground(new java.awt.Color(109, 201, 162));
+        btnVerPlanilla.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVerPlanilla.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerPlanilla.setText("Ver Planilla");
+        btnVerPlanilla.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(109, 201, 162), 1, true));
+        btnVerPlanilla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlanillaActionPerformed(evt);
+                btnVerPlanillaActionPerformed(evt);
             }
         });
 
@@ -107,14 +109,25 @@ public class frmPrincipal extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Menú de Opciones");
 
-        btnPlanilla1.setBackground(new java.awt.Color(109, 201, 162));
-        btnPlanilla1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnPlanilla1.setForeground(new java.awt.Color(255, 255, 255));
-        btnPlanilla1.setText("Generar Planilla");
-        btnPlanilla1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(109, 201, 162), 1, true));
-        btnPlanilla1.addActionListener(new java.awt.event.ActionListener() {
+        btnGenerarPlanilla.setBackground(new java.awt.Color(109, 201, 162));
+        btnGenerarPlanilla.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnGenerarPlanilla.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerarPlanilla.setText("Generar Planilla");
+        btnGenerarPlanilla.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(109, 201, 162), 1, true));
+        btnGenerarPlanilla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlanilla1ActionPerformed(evt);
+                btnGenerarPlanillaActionPerformed(evt);
+            }
+        });
+
+        btnVerEmpleados.setBackground(new java.awt.Color(100, 177, 255));
+        btnVerEmpleados.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVerEmpleados.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerEmpleados.setText("Ver Empleados");
+        btnVerEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
+        btnVerEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerEmpleadosActionPerformed(evt);
             }
         });
 
@@ -127,12 +140,13 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(btnPlanilla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVerPlanilla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPlanilla1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnGenerarPlanilla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVerEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addGap(50, 50, 50)
                 .addComponent(jLabel2)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,17 +164,21 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnPlanilla1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnVerEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addComponent(btnGenerarPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVerPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(30, 30, 30))
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
@@ -224,9 +242,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -240,16 +257,18 @@ public class frmPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
-    private void btnPlanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanillaActionPerformed
+    private void btnVerPlanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPlanillaActionPerformed
         // TODO add your handling code here:
-        frmDetallePlanilla frmPlanilla = new frmDetallePlanilla();
+        frmPlanilla frmPlanilla = new frmPlanilla();
         frmPlanilla.setVisible(true);
-    }//GEN-LAST:event_btnPlanillaActionPerformed
+    }//GEN-LAST:event_btnVerPlanillaActionPerformed
 
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
         // TODO add your handling code here:
         frmCrearEmpleado frmEmpleado = new frmCrearEmpleado();
+        frmEmpleado.setEditableCampos(false);
         frmEmpleado.setVisible(true);
+        
     }//GEN-LAST:event_btnEmpleadosActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -257,9 +276,18 @@ public class frmPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnPlanilla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanilla1ActionPerformed
+    private void btnGenerarPlanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarPlanillaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPlanilla1ActionPerformed
+        frmCrearPlanilla frmCrearPlanilla = new frmCrearPlanilla();
+        frmCrearPlanilla.setVisible(true);
+    }//GEN-LAST:event_btnGenerarPlanillaActionPerformed
+
+    private void btnVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerEmpleadosActionPerformed
+        // TODO add your handling code here:
+        frmEmpleadosPlanilla frmEmpleadosPlanilla = new frmEmpleadosPlanilla();
+        frmEmpleadosPlanilla.setVisible(true);
+        
+    }//GEN-LAST:event_btnVerEmpleadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,10 +326,11 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEmpleados;
-    private javax.swing.JButton btnPlanilla;
-    private javax.swing.JButton btnPlanilla1;
+    private javax.swing.JButton btnGenerarPlanilla;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnUsuario;
+    private javax.swing.JButton btnVerEmpleados;
+    private javax.swing.JButton btnVerPlanilla;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

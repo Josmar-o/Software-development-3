@@ -227,8 +227,8 @@ public class frmTareas extends javax.swing.JFrame {
     jLabel7.setText("Tareas Completadas");
     jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-    jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
     jLabel8.setText("TOCA UN ROW Y \nMIRA LA DESCRIPCION AKI");
+    jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);

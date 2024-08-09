@@ -4,6 +4,7 @@
  */
 package Frms;
 import Metodos.*;
+import Clases.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -228,6 +229,7 @@ public class frmLogin extends javax.swing.JFrame {
             
         } else {   
             JOptionPane.showMessageDialog(rootPane, "Contraseña o Usuario incorrectos");
+            cleanTxtLogin();
         }
         
     }

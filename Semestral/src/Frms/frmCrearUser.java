@@ -22,7 +22,7 @@ public class frmCrearUser extends javax.swing.JFrame {
         txtCedula.setText("");
         txtDireccion.setText("");
         txtContra1.setText("");
-        txtContra1.setText("");
+        txtContra2.setText("");
     }
     /**
      * Creates new form frmCrearUser
@@ -332,16 +332,19 @@ public class frmCrearUser extends javax.swing.JFrame {
                 String cedula = txtCedula.getText();
                 String direccion = txtDireccion.getText();
                 String contra1 = txtContra1.getText();
-                String contra2 = txtContra1.getText();
+                String contra2 = txtContra2.getText();
                 LocalDate fechaIngreso = LocalDate.now();
             if (contra1.contains(" ") ||contra2.contains(" ")) {
                 JOptionPane.showMessageDialog(rootPane, "El campo contraseña o Confirmar Contraseña no pueden tener espacios");
+            
             }else{
                 
                 if (Usuario.verificarContra(contra1, contra2)) {
                     Usuario usuario = new Usuario(user, contra1, cedula, nombre, apellido, direccion,  fechaIngreso);
-  
+                    MetodosUsuario.registrarUsuario(usuario);
                     cleanTxtCrearUser();
+                    JOptionPane.showMessageDialog(rootPane, "Registro Exitoso");
+                
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Las contraseñas tienen que ser las mismas");
                 }

@@ -19,21 +19,20 @@ public class Empleado {
      private String apellido2;
     private String direccion;
     private String telefono;
-    private String fechaNacimiento;
-    
-    private double horasTrab;
+    private LocalDate fechaNacimiento;
+   
+    private int horasTrab;
     private double salarioHora;
     private double salarioBruto;
     private double seguroSocial;
     private double seguroEducativo;
     private double salarioNeto;
     
-    
     public Empleado(){
         
     }
 
-    public Empleado(String cedula, String nombre, String nombre2, String apellido, String apellido2, String direccion, String telefono, String fechaNac, double salarioHora, double horasTrab) {
+    public Empleado(String cedula, String nombre, String nombre2, String apellido, String apellido2, String direccion, String telefono, LocalDate fechaNac) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.nombre2 = nombre2;
@@ -42,12 +41,43 @@ public class Empleado {
         this.direccion = direccion;
         this.telefono = telefono; 
         this.fechaNacimiento = fechaNac;
+
+    }
+    
+    public Empleado(String cedula, String nombre, String nombre2, String apellido, String apellido2, int horasTrab, double salarioHora, LocalDate fecha) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.nombre2 = nombre2;
+        this.apellido = apellido;
+        this.apellido2 = apellido2;
+        setHorasTrab(horasTrab);
+        setSalarioHora(salarioHora);
+        this.fechaNacimiento = fecha;
+        calcularTodo(this.salarioHora, this.horasTrab);
+    }
+    public void calcularTodo(double salarioHora, int horasTrab) {
         this.salarioHora = salarioHora;
         this.horasTrab = horasTrab;
+        
         calcularSalarioBruto();
-        calcularSeguroEducativo();
         calcularSeguroSocial();
+        calcularSeguroEducativo();
         calcularSalarioNeto();
+    }
+    
+        
+    public void calcularSalarioBruto(){
+        salarioBruto = salarioHora * horasTrab;
+    }
+    
+    public void calcularSeguroSocial(){
+        this.seguroSocial = this.salarioBruto * 0.0975;
+    }
+    public void calcularSeguroEducativo(){
+        this.seguroEducativo = this.salarioBruto * 0.0125;
+    }
+    public void calcularSalarioNeto(){
+        this.salarioNeto = salarioBruto - seguroEducativo - seguroSocial;
     }
 
     public String getCedula() {
@@ -106,11 +136,22 @@ public class Empleado {
         this.telefono = telefono;
     }
 
-    public double getHorasTrab() {
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public int getHorasTrab() {
         return horasTrab;
     }
 
-    public void setHorasTrab(double horasTrab) {
+    public void setHorasTrab(int horasTrab) {
+        if (horasTrab < 4 || horasTrab > 12) {
+            throw new IllegalArgumentException("Las horas trabajadas deben estar entre 4 y 12.");
+        }
         this.horasTrab = horasTrab;
     }
 
@@ -119,6 +160,10 @@ public class Empleado {
     }
 
     public void setSalarioHora(double salarioHora) {
+        // Validación de salario por hora entre 5.00 y 20.00
+        if (salarioHora < 5.00 || salarioHora > 20.00) {
+            throw new IllegalArgumentException("El salario por hora debe estar entre 5.00 y 20.00.");
+        }
         this.salarioHora = salarioHora;
     }
 
@@ -126,8 +171,8 @@ public class Empleado {
         return salarioBruto;
     }
 
-    public void setSalarioBruto(double SalarioBruto) {
-        this.salarioBruto = SalarioBruto;
+    public void setSalarioBruto(double salarioBruto) {
+        this.salarioBruto = salarioBruto;
     }
 
     public double getSeguroSocial() {
@@ -152,27 +197,6 @@ public class Empleado {
 
     public void setSalarioNeto(double salarioNeto) {
         this.salarioNeto = salarioNeto;
-    }
-
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-    public void calcularSalarioBruto(){
-        salarioBruto = salarioHora * horasTrab;
-    }
-    
-    public void calcularSeguroSocial(){
-        this.seguroSocial = this.salarioBruto * 0.0975;
-    }
-    public void calcularSeguroEducativo(){
-        this.seguroEducativo = this.salarioBruto * 0.0125;
-    }
-    public void calcularSalarioNeto(){
-        this.salarioNeto = salarioBruto - seguroEducativo - seguroSocial;
     }
 
 

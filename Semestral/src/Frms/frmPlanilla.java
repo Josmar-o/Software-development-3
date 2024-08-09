@@ -3,10 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Frms;
+import Clases.Planilla;
 import Clases.Empleado;
 import Metodos.MetodosEmpleados;
+import Metodos.MetodosPlanilla;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,14 +18,15 @@ import javax.swing.table.DefaultTableModel;
  * @author omargarcia
  */
 public class frmPlanilla extends javax.swing.JFrame {
+        int id = -1;
     private void cargarRegitros(JTable table){
         DefaultTableModel modelo = (DefaultTableModel) table.getModel();
         modelo.setRowCount(0);
-        ArrayList <Empleado> listaEmpleados = MetodosEmpleados.cargarEmpleados();
+        ArrayList <Planilla> planillas = MetodosPlanilla.obtenerPlanillas();
         
-        for(int i = 0; i < listaEmpleados.size(); i++){
-            Empleado empleado = listaEmpleados.get(i);
-            String [] arreglo = {empleado.getCedula(),String.valueOf(empleado.getFechaNacimiento()), empleado.getNombre(), empleado.getNombre2(), empleado.getApellido(), empleado.getApellido2(), String.valueOf(empleado.getHorasTrab()), String.valueOf(empleado.getSalarioHora()), String.valueOf(empleado.getSalarioBruto()), String.valueOf(empleado.getSeguroSocial()), String.valueOf(empleado.getSeguroEducativo()), String.valueOf(empleado.getSalarioNeto())};
+        for(int i = 0; i < planillas.size(); i++){
+            Planilla planilla = planillas.get(i);
+            String [] arreglo = {planilla.getIdPlanilla() + "",planilla.getFecha()+ "", planilla.getTotalSalarioBruto()+ "", planilla.getTotalSeguroSocial()+ "", planilla.getTotalSeguroEducativo()+ "", planilla.getTotalSalarioNeto()+ ""};
             modelo.addRow(arreglo);  
           }
     }
@@ -44,10 +48,11 @@ public class frmPlanilla extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         btnCrearPlanilla = new javax.swing.JButton();
         btnVerDetalles = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -56,11 +61,11 @@ public class frmPlanilla extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
         jLabel1.setText("Calculo de Planilla");
 
-        jTable.setBackground(new java.awt.Color(153, 204, 255));
-        jTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
-        jTable.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTable.setForeground(new java.awt.Color(255, 255, 255));
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
+        table.setBackground(new java.awt.Color(153, 204, 255));
+        table.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
+        table.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        table.setForeground(new java.awt.Color(255, 255, 255));
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -68,11 +73,17 @@ public class frmPlanilla extends javax.swing.JFrame {
                 "ID Planilla", "Fecha", "Salario Bruto", "Seguro S", "Seguro E", "Salario Neto"
             }
         ));
-        jTable.setGridColor(new java.awt.Color(51, 153, 255));
-        jScrollPane1.setViewportView(jTable);
+        table.setGridColor(new java.awt.Color(51, 153, 255));
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(table);
 
         btnCrearPlanilla.setBackground(new java.awt.Color(100, 177, 255));
         btnCrearPlanilla.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnCrearPlanilla.setForeground(new java.awt.Color(255, 255, 255));
         btnCrearPlanilla.setText("Crear Planilla");
         btnCrearPlanilla.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 177, 255), 1, true));
         btnCrearPlanilla.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +94,7 @@ public class frmPlanilla extends javax.swing.JFrame {
 
         btnVerDetalles.setBackground(new java.awt.Color(100, 177, 255));
         btnVerDetalles.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVerDetalles.setForeground(new java.awt.Color(255, 255, 255));
         btnVerDetalles.setText("Ver Detalles de Planilla");
         btnVerDetalles.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 177, 255), 1, true));
         btnVerDetalles.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +105,7 @@ public class frmPlanilla extends javax.swing.JFrame {
 
         btnCerrar.setBackground(new java.awt.Color(100, 177, 255));
         btnCerrar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrar.setText("Cerrar");
         btnCerrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 177, 255), 1, true));
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,36 +114,53 @@ public class frmPlanilla extends javax.swing.JFrame {
             }
         });
 
+        btnActualizar.setBackground(new java.awt.Color(109, 201, 162));
+        btnActualizar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(109, 201, 162), 1, true));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCrearPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnVerDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(110, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(245, 245, 245)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnCrearPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(46, 46, 46)
+                            .addComponent(btnVerDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrearPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,15 +169,48 @@ public class frmPlanilla extends javax.swing.JFrame {
 
     private void btnCrearPlanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPlanillaActionPerformed
         // TODO add your handling code here:
+        frmCrearPlanilla frmCrearPlanilla = new frmCrearPlanilla();
+        frmCrearPlanilla.setVisible(true);
     }//GEN-LAST:event_btnCrearPlanillaActionPerformed
 
     private void btnVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDetallesActionPerformed
         // TODO add your handling code here:
+        int selectedRow = table.getSelectedRow();
+            if (selectedRow != -1) {
+                Object data = table.getValueAt(selectedRow, 0);
+                id = Integer.parseInt((String) data);
+    
+                try {
+                frmDetallePlanilla frmDetallePlanilla = new frmDetallePlanilla();
+                frmDetallePlanilla.setVisible(true);
+                frmDetallePlanilla.cargarRegitrosDetalles(id);
+            }catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error al abrir el formulario de detalle.");
+            }
+            } else {
+            JOptionPane.showMessageDialog(rootPane, "Seleccione una fila.");
+            }
     }//GEN-LAST:event_btnVerDetallesActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        try{
+            cargarRegitros(table);
+        }catch (Exception e) {
+
+        }
+
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_tableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -188,11 +251,12 @@ public class frmPlanilla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnCrearPlanilla;
     private javax.swing.JButton btnVerDetalles;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
